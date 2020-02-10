@@ -1,0 +1,687 @@
+fileFormatVersion: 2
+guid: e30a4b0f4ed87744f94c92c1afc5fa0d
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_0
+    21300002: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_1
+    21300004: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_2
+    21300006: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_3
+    21300008: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_4
+    21300010: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_5
+    21300012: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_6
+    21300014: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_7
+    21300016: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_8
+    21300018: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_9
+    21300020: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_10
+    21300022: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_11
+    21300024: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_12
+    21300026: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_13
+    21300028: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_14
+    21300030: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_15
+    21300032: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_16
+    21300034: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_17
+    21300036: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_18
+    21300038: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_19
+    21300040: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_20
+    21300042: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_21
+    21300044: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_22
+    21300046: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_23
+    21300048: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_24
+    21300050: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_25
+    21300052: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_26
+    21300054: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_27
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 455.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d63133bf4a3fb4fa1f90e2b7da6ee8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 455.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594d0c3f5550c144a927958be1fb70b2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 455.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9b5b07a2b21f544dafe77a737a3278e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 455.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1dc46c914b90d94e8dd83a137fa7c21
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_4
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 455.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf4a3d3ffb738c43ba38e683daa96bc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_5
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 455.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ec8a297b9f34f41850cd76f485d37e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_6
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 455.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf17e1ad733a9e40a3470a2ec5ab4c8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6c7589fc365cb41bcdcc8382611024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_8
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 304.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4601934591401c4391be9279e74fc2e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_9
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 304.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7dc2b77dbda5f34da81612dcd2afbcd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_10
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 304.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd57da9cf233f3e4bbc0c4d8b5ef85ca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_11
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 304.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c09ea802a5bc424cb4d2f5329635fa5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_12
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 304.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb9cb09d50d6aa469527cfac2b7f2b3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_13
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 304.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f67c5078f4a43334c87b2e561192a7da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 153.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be6f6b4c6b5b9344f9631d6f78862f8d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_15
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 153.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e10c66d6c5fdec45b8df54d37f0f6f4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_16
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 153.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e158bec81bdcf204d82fb9908d9696da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_17
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 153.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8815809c007d168469afb27b25c77fb8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_18
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 153.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5222acf1c9d7d23429a54711d4a94956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_19
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 153.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561e6b72572bc4048961fe484a8e7af9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_20
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 153.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73db2928a48621d4d9164db15f4c7541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69a02436772ad142a3448c68860a29c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_22
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 2.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb704db1b9e3bc4780c481409ff4f20
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_23
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 2.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b81963be19d084b9641a85258f3f49
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_24
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 2.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd598b300f313d7488dcb1e43bb5b411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_25
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 2.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da2dfc4b9bd0024ca598413a8b2c8b6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_26
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 2.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75c63aea702c86b4d854ba1a9ad70509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite-animal-figure-2d-computer-graphics-video-games-animation-css-sprites-pixel-art-opengameartorg-twodimensional-space-png-clip-art_27
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 2.25
+        width: 130
+        height: 151.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daeece3ab35d7b542bc7658f4b8e0668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0d80058675e3f3c46b94cc96f4a25531
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
