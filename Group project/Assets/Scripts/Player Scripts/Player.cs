@@ -8,10 +8,8 @@ public class Player : MonoBehaviour
 
     private Animator myAnimator;
 
-
     [SerializeField]
     private float movementSpeed;
-
 
     private bool attack;
 

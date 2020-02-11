@@ -12,13 +12,13 @@ public class FollowPlayer : MonoBehaviour
     void Start()
     {
         mainCamera = GetComponent<Camera>();
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerInfo = player.transform.transform.position;
+        Vector3 playerInfo = player.transform.position;
         mainCamera.transform.position = new Vector3(playerInfo.x, playerInfo.y, playerInfo.z - cameraDistOffset);
     }
 }

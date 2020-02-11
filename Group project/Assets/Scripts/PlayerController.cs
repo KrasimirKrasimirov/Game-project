@@ -7,23 +7,28 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpSpeed = 5f;
-    public bool isGrounded = false;
-    public static int lives = 3;
+    public bool isGrounded;
+    public static float currentHealth;
+    public static float maxHealth = 100;
     public Button restartButton;
 
+    [SerializeField]
+    Image healthBar;
+
     void Start() {
-        lives = 3;
+        currentHealth = maxHealth;
         isGrounded = false;
         Time.timeScale = 1.0f;
     }
 
     void Update()
     {
+        healthBar.fillAmount = currentHealth / 100;
         Jump();
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * moveSpeed;
 
-        if (lives == 0)
+        if (currentHealth <= 0)
         {
             Die();
         }

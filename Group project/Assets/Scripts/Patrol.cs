@@ -10,6 +10,8 @@ public class Patrol : MonoBehaviour
     public float returnToX;
     public float returnToY;
 
+    float damage = 20;
+
     void Start()
     {
     }
@@ -42,8 +44,8 @@ public class Patrol : MonoBehaviour
             Vector3 movement = new Vector3(returnToX, returnToY, 0f);
             transform.position = movement;
 
-            PlayerController.lives--;
-            Debug.Log(PlayerController.lives);
+            PlayerController.currentHealth -= damage;
+            Debug.Log(PlayerController.currentHealth);
         }
     }
 

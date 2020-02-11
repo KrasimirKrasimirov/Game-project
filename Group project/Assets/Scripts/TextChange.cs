@@ -5,19 +5,15 @@ using UnityEngine.UI;
 
 public class TextChange : MonoBehaviour
 {
-    public Text txt;
-
-
-    // Use this for initialization
-    void Start()
-    {
-       
-        txt.text = "Lives : " + PlayerController.lives;
-    }
+    public Text healthText;
+    public Text reserveAmmoText;
+    public Text loadedAmmoText;
 
     // Update is called once per frame
     void Update()
     {
-        txt.text = "Lives : " + PlayerController.lives;
+        healthText.text = "Health : " + PlayerController.currentHealth;
+        reserveAmmoText.text = "Reserve Ammo : " + Musket.currentAmmo;
+        loadedAmmoText.text = "Loaded Ammo : " + Musket.loadedAmmo;
     }
 }
