@@ -21,15 +21,23 @@ public class Grounded : MonoBehaviour
     {
         if(collision.collider.tag == "Ground")
         {
-            Player.GetComponent<PlayerController>().isGrounded = true;
+            Player.GetComponent<Player>().isGrounded = true;
+            Player.GetComponent<Player>().myAnimator.SetBool("Grounded", true);
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        Player.GetComponent<Player>().isGrounded = true;
+        //Player.GetComponent<Player>().myAnimator.SetBool("Grounded", true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
         {
-            Player.GetComponent<PlayerController>().isGrounded = false;
+            Player.GetComponent<Player>().isGrounded = false;
+            Player.GetComponent<Player>().myAnimator.SetBool("Grounded", false);
         }
     }
 }
