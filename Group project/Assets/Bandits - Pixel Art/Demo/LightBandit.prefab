@@ -163,15 +163,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b726e66cc91a3494789ded598da61b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAnimator: {fileID: 0}
   isGrounded: 0
   movementSpeed: 10
-  jumpSpeed: 0
+  jumpSpeed: 10
   attackPoint: {fileID: 1649836364452927479}
-  attackRange: 1.4
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
+  attackRange: 1.4
   attackDamage: 40
+  attackRate: 2
 --- !u!1 &1943394156383696
 GameObject:
   m_ObjectHideFlags: 0
