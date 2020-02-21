@@ -38,14 +38,18 @@ public class Patrol : MonoBehaviour
 
         if(collision.collider.tag == "Player")
         {
-            Debug.Log("killed player");
+            //Debug.Log("killed player");
 
 
             Vector3 movement = new Vector3(returnToX, returnToY, 0f);
             transform.position = movement;
 
-            PlayerController.currentHealth -= damage;
-            Debug.Log(PlayerController.currentHealth);
+            
+
+            Player.currentHealth -= damage;
+            //Player.isHurt = true;
+            //Debug.Log(Player.currentHealth);
+            collision.gameObject.GetComponent<Player>().myAnimator.SetBool("Hurt", true);
         }
     }
 

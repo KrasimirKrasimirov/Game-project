@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 693247193, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 152746475}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
 --- !u!1 &152746473
@@ -206,7 +210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 153}
   m_SizeDelta: {x: 164.03, y: 116.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152746475
@@ -606,7 +610,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lives :'
+  m_Text: 'Health :'
 --- !u!222 &410989915
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1027,7 +1031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46512fb4c989e9d49acd9f8aacc4605a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 0}
+  healthText: {fileID: 410989914}
   reserveAmmoText: {fileID: 0}
   loadedAmmoText: {fileID: 0}
 --- !u!114 &629873356
@@ -2070,6 +2074,7 @@ MonoBehaviour:
   isGrounded: 0
   movementSpeed: 10
   jumpSpeed: 0
+  restartButton: {fileID: 0}
   attackPoint: {fileID: 0}
   enemyLayers:
     serializedVersion: 2

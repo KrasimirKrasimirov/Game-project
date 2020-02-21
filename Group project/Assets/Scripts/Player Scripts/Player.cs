@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,13 +9,16 @@ public class Player : MonoBehaviour
 
     public Animator myAnimator;
     public bool isGrounded;
+    public static bool isHurt;
 
     [SerializeField]
     public float movementSpeed;
     public float jumpSpeed;
-    
+    Image healthBar;
 
-
+    public static float currentHealth;
+    public static float maxHealth = 100;
+    public Button restartButton;
 
 
     public Transform attackPoint;
@@ -31,6 +35,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+        Time.timeScale = 1.0f;
         movementSpeed = 10;
         jumpSpeed = 5;
         isGrounded = false;
@@ -40,8 +46,25 @@ public class Player : MonoBehaviour
         
     }
 
+    public Animator getAnimator()
+    {
+        return myAnimator;
+    }
+
     void Update()
     {
+        //healthBar.fillAmount = currentHealth / 100;
+        Debug.Log(currentHealth);
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+
+        if(isHurt)
+        {
+           // myAnimator.SetTrigger("Hurt");
+        }
+
         float vertical = Input.GetAxis("Vertical");
 
         if(Time.time >= nextAttackTime)
@@ -138,5 +161,13 @@ public class Player : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    void Die()
+    {
+        myAnimator.SetTrigger("Death");
+
+        restartButton.gameObject.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 }

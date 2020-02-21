@@ -12,7 +12,7 @@ public class TextChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = "Health : " + PlayerController.currentHealth;
+        healthText.text = "Health : " + Player.currentHealth;
         reserveAmmoText.text = "Reserve Ammo : " + Musket.currentAmmo;
         loadedAmmoText.text = "Loaded Ammo : " + Musket.loadedAmmo;
     }
