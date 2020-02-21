@@ -22,10 +22,10 @@ public class Enemies : MonoBehaviour
         currentHealth -= damage;
 
 
-        animator.SetTrigger("Hurt");
+        animator.SetBool("Hurt", true);
 
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }

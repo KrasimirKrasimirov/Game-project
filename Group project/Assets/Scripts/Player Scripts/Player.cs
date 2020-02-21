@@ -60,10 +60,6 @@ public class Player : MonoBehaviour
             Die();
         }
 
-        if(isHurt)
-        {
-           // myAnimator.SetTrigger("Hurt");
-        }
 
         float vertical = Input.GetAxis("Vertical");
 
@@ -166,7 +162,7 @@ public class Player : MonoBehaviour
     void Die()
     {
         myAnimator.SetTrigger("Death");
-
+        this.enabled = false;
         restartButton.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
     }
