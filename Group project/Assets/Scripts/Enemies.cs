@@ -9,6 +9,8 @@ public class Enemies : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
 
+    [SerializeField]
+    GameObject coin;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,15 @@ public class Enemies : MonoBehaviour
 
         animator.SetBool("Dead", true);
 
-        
+        //create coin(s) on death
+
+
+        int amountOfCoins = Random.Range(1, 4);
+        for(; amountOfCoins > 0; amountOfCoins--)
+        {
+            Instantiate(coin, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, Random.Range(1, 360)));
+        }
+
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
     }
