@@ -10,7 +10,7 @@ public class Patrol : MonoBehaviour
     public float returnToX;
     public float returnToY;
 
-    float damage = 20;
+    int damage = 20;
 
     void Start()
     {
@@ -38,18 +38,11 @@ public class Patrol : MonoBehaviour
 
         if(collision.collider.tag == "Player")
         {
-            //Debug.Log("killed player");
-
-
             Vector3 movement = new Vector3(returnToX, returnToY, 0f);
             transform.position = movement;
 
             
-
-            Player.currentHealth -= damage;
-            //Player.isHurt = true;
-            //Debug.Log(Player.currentHealth);
-            collision.gameObject.GetComponent<Player>().myAnimator.SetBool("Hurt", true);
+            collision.gameObject.GetComponent<Player>().Hurt(damage);
         }
     }
 

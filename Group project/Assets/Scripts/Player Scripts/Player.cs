@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
         movementSpeed = 10;
-        jumpSpeed = 5;
+        jumpSpeed = 15;
         isGrounded = false;
         facingRight = true;
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //healthBar.fillAmount = currentHealth / 100;
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
         //damage enemy
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemies>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemies>().Hurt(attackDamage);
         }
     }
 
@@ -165,5 +165,19 @@ public class Player : MonoBehaviour
         this.enabled = false;
         restartButton.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
+    }
+
+    public void Hurt(int damage)
+    {
+        currentHealth -= damage;
+
+
+        myAnimator.SetBool("Hurt", true);
+
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 }

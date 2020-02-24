@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2042060561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042060562}
+  m_Layer: 8
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2042060562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042060561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.177, y: 0.234, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4588935210562790}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1287205349689962
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +70,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287205349689962}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4beb47d3f52622a4db6bba0f8809ce39, type: 3}
   m_Name: 
@@ -116,6 +146,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 4532010589869964}
+  - {fileID: 2042060562}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -206,7 +237,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &61346583712760016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -247,3 +278,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 95734438044755836}
   maxHealth: 100
+  patrolSpeed: 3
+  maxSpeed: 8
+  triggerRange: 7.5
+  facingRight: 1
+  attackPoint: {fileID: 2042060562}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  attackRange: 2.5
+  attackDamage: 20
+  attackRate: 0.5
+  groundCheck: {fileID: 1287205349689962}
+  isGrounded: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  patrolPoint1: {fileID: 0}
+  patrolPoint2: {fileID: 0}
+  nextPatrolPoint: {fileID: 0}
