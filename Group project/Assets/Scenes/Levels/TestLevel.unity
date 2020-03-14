@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 152746475}
+    - target: {fileID: 693247193, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
+      propertyPath: knockback
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 693247193, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
+      propertyPath: knockbackLength
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
 --- !u!1 &152746473
@@ -1219,7 +1227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &749750460
 Transform:
   m_ObjectHideFlags: 0
@@ -2236,6 +2244,11 @@ MonoBehaviour:
   attackRange: 0.5
   attackDamage: 40
   attackRate: 2
+  invincible: 0
+  knockback: 0
+  knockbackLength: 0
+  knockbackCount: 0
+  knockFromRight: 0
 --- !u!61 &2132734595
 BoxCollider2D:
   m_ObjectHideFlags: 0

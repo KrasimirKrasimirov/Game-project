@@ -224,6 +224,15 @@ public class Enemies : MonoBehaviour
                 foreach (Collider2D enemy in hitEnemies)
                 {
                     enemy.GetComponent<Player>().Hurt(attackDamage);
+                    if(enemy.GetComponent<Player>().transform.position.x < transform.position.x)
+                    {
+                        enemy.GetComponent<Player>().knockFromRight = true;
+                    }
+                    else
+                    {
+                        enemy.GetComponent<Player>().knockFromRight = false;
+                    }
+                    
                 }
                 nextAttackTime = Time.time + 1f / attackRate;
             }

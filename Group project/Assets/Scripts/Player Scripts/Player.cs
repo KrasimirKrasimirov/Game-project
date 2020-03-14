@@ -32,6 +32,14 @@ public class Player : MonoBehaviour
 
     private bool facingRight;
 
+    public bool invincible;
+    private float invincibilityTime = 3f;
+
+    public float knockback; //amount of force applied when the player gets knocked back
+    public float knockbackLength; //how long the player gets knocked back for in terms of time
+    public float knockbackCount; //counts down the knockbacck
+    public bool knockFromRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +49,7 @@ public class Player : MonoBehaviour
         jumpSpeed = 15;
         isGrounded = false;
         facingRight = true;
+        invincible = false;
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         
@@ -72,7 +81,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        
+
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
@@ -107,8 +116,21 @@ public class Player : MonoBehaviour
     { 
         if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
+            if(knockbackCount <= 0) { 
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
-
+            }
+            else
+            {
+                if (knockFromRight)
+                {
+                    myRigidbody.velocity = new Vector2(-knockback, knockback/4);
+                }
+                if (!knockFromRight)
+                {
+                    myRigidbody.velocity = new Vector2(knockback, knockback/4);
+                }
+                knockbackCount -= Time.deltaTime;
+            }
         }
 
 
@@ -169,8 +191,17 @@ public class Player : MonoBehaviour
 
     public void Hurt(int damage)
     {
-        currentHealth -= damage;
+        if (!invincible)
+        {
+            Debug.Log("Hurt");
+            currentHealth -= damage;
 
+            knockbackCount = knockbackLength;
+           
+            StartCoroutine(Invulnerability());
+        }
+
+        
 
         myAnimator.SetBool("Hurt", true);
 
@@ -180,4 +211,14 @@ public class Player : MonoBehaviour
             Die();
         }
     }
+
+    IEnumerator Invulnerability()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(invincibilityTime);
+        invincible = false;
+    }
+
+
+
 }
