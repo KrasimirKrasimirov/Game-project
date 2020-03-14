@@ -22,7 +22,7 @@ public class Musket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PointToMouse();
+        //PointToMouse();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

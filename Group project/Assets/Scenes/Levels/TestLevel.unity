@@ -171,13 +171,9 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 152746475}
-    - target: {fileID: 693247193, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
-      propertyPath: knockback
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 693247193, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
-      propertyPath: knockbackLength
-      value: 0.05
+    - target: {fileID: 482423410, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2183501755a214591e802f3aff33d2, type: 3}

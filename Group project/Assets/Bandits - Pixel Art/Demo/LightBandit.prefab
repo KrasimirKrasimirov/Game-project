@@ -176,6 +176,11 @@ MonoBehaviour:
   attackRange: 1.4
   attackDamage: 40
   attackRate: 2
+  invincible: 0
+  knockback: 10
+  knockbackLength: 0.05
+  knockbackCount: 0
+  knockFromRight: 0
 --- !u!114 &482423410
 MonoBehaviour:
   m_ObjectHideFlags: 0

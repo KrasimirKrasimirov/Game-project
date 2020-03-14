@@ -258,7 +258,7 @@ public class Enemies : MonoBehaviour
     void PerformMovement(float speed)
     {
         float absSpeed = Mathf.Abs(speed);
-        Rigidbody2D rigidBodyComp = GetComponent<Rigidbody2D>();
+
         float newXVelocity = rigidBodyComp.velocity.x + speed * speedMultiplier * Time.fixedDeltaTime;
         rigidBodyComp.velocity = new Vector2(Mathf.Clamp(newXVelocity, -absSpeed, absSpeed), rigidBodyComp.velocity.y);
         animator.SetFloat("Speed", speed / maxSpeed);
@@ -292,6 +292,7 @@ public class Enemies : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
 
         gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        rigidBodyComp.velocity = new Vector2(0.0f,0.0f);
 
         this.enabled = false;
     }

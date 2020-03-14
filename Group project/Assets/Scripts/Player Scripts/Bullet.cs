@@ -8,21 +8,35 @@ public class Bullet : MonoBehaviour
     public int damage = 50;
     public Rigidbody2D rb;
 
+    public Player player;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        player = FindObjectOfType<Player>();
+
+        if(player.transform.localScale.x < 0)
+        {
+            speed = -speed;
+        }
+
+        
+    }
+
+    private void Update()
+    {
+        rb.velocity = new Vector2(speed, 0);
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if (hitInfo.tag == "Enemy")
         {
-            Enemy enemy = hitInfo.GetComponent<Enemy>();
+            Enemies enemy = hitInfo.GetComponent<Enemies>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.Hurt(damage);
             }
             Destroy(gameObject);
         }else if (hitInfo.tag == "Ground" || hitInfo.tag == "Obstacle")
