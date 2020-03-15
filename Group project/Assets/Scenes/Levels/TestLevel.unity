@@ -171,10 +171,6 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 152746475}
-    - target: {fileID: 482423410, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
 --- !u!1 &152746473
@@ -1013,67 +1009,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &597720307 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1133687775}
-  m_PrefabAsset: {fileID: 0}
---- !u!66 &597720308
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597720307}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 597720309}
-    m_ColliderPaths:
-    - - X: 11000000
-        Y: 40500000
-      - X: -11000000
-        Y: 40500000
-      - X: -11000000
-        Y: 3014248
-      - X: 11000000
-        Y: 3014248
-  - m_Collider: {fileID: 1975794339}
-    m_ColliderPaths:
-    - - X: 7999999
-        Y: 3014245
-      - X: -7999999
-        Y: 3014245
-      - X: -7999999
-        Y: 1309604
-      - X: 7999999
-        Y: 1309604
-  m_CompositePaths:
-    m_Paths:
-    - - {x: 1.1, y: 4.05}
-      - {x: -1.1, y: 4.05}
-      - {x: -1.1, y: 0.3014248}
-      - {x: 1.1, y: 0.3014248}
-    - - {x: 0.7999999, y: 0.3014245}
-      - {x: -0.7999999, y: 0.3014245}
-      - {x: -0.7999999, y: 0.1309604}
-      - {x: 0.7999999, y: 0.1309604}
-  m_VertexDistance: 0.0005
---- !u!61 &597720309 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 61346583712760016, guid: 3248535f6a2562c489a1223a75951ef2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1133687775}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &605478571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,10 +1533,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeavyBandit
       objectReference: {fileID: 0}
-    - target: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4588935210562790, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.444845
@@ -1654,20 +1585,6 @@ PrefabInstance:
       propertyPath: patrolPoint2
       value: 
       objectReference: {fileID: 990235224}
-    - target: {fileID: 61346583712760016, guid: 3248535f6a2562c489a1223a75951ef2,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61751993304262736, guid: 3248535f6a2562c489a1223a75951ef2,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 839085943, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
 --- !u!1001 &1141220367
@@ -2152,12 +2069,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1409727373246835042, guid: 6c2e5f13bd1e3974c8fe6e8bb2a367fd,
     type: 3}
   m_PrefabInstance: {fileID: 195303997}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1975794339 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 61751993304262736, guid: 3248535f6a2562c489a1223a75951ef2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1133687775}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2093775854 stripped
 Transform:
