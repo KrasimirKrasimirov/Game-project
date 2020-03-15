@@ -27,6 +27,8 @@ public class Enemies : MonoBehaviour
     public float attackRange = 2.5f;
     public int attackDamage = 20;
 
+    public int collisionDamage = 10;
+
     public float attackRate = 0.5f;
     float nextAttackTime = 0f;
 
@@ -159,9 +161,16 @@ public class Enemies : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
-         {
-             aiState = State.Attack;
-         }
+        {
+            collision.collider.GetComponent<Player>().Hurt(collisionDamage);
+            aiState = State.Attack;
+            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        if (collision.collider.tag == "Ground")
+        {
+            isGrounded = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -193,7 +202,13 @@ public class Enemies : MonoBehaviour
     {
         if (collision.collider.tag == "Ground")
         {
+            Debug.Log("ground collision");
             isGrounded = true;
+        }
+        if (collision.collider.tag == "Player")
+        {
+            Debug.Log("player collision");
+            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -204,6 +219,12 @@ public class Enemies : MonoBehaviour
         if (collision.collider.tag == "Ground")
         {
             isGrounded = false;
+        }
+
+        if(collision.collider.tag == "Player")
+        {
+            rigidBodyComp.constraints = RigidbodyConstraints2D.None;
+            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 
