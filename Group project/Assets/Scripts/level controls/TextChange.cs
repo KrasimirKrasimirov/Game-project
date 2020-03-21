@@ -13,7 +13,7 @@ public class TextChange : MonoBehaviour
     void Update()
     {
         healthText.text = "Health : " + Player.currentHealth;
-        reserveAmmoText.text = "Reserve Ammo : " + Musket.currentAmmo;
-        loadedAmmoText.text = "Loaded Ammo : " + Musket.loadedAmmo;
+        //reserveAmmoText.text = "Reserve Ammo : " + Musket.currentAmmo;
+        //loadedAmmoText.text = "Loaded Ammo : " + Musket.loadedAmmo;
     }
 }
