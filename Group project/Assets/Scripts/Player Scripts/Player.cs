@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
         movementSpeed = 10;
-        jumpSpeed = 15;
+        jumpSpeed = 20;
         isGrounded = false;
         facingRight = true;
         invincible = false;
