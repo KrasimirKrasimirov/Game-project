@@ -45,8 +45,8 @@ public class Player : MonoBehaviour
     {
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
-        movementSpeed = 10;
-        jumpSpeed = 20;
+        movementSpeed = 10.0f;
+        jumpSpeed = 22.0f;
         isGrounded = false;
         facingRight = true;
         invincible = false;

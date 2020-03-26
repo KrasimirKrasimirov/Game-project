@@ -167,7 +167,7 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   isGrounded: 0
   movementSpeed: 10
-  jumpSpeed: 20
+  jumpSpeed: 22
   restartButton: {fileID: 0}
   attackPoint: {fileID: 1649836364452927479}
   enemyLayers:
