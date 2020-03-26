@@ -8,7 +8,7 @@ public class Musket : MonoBehaviour
     public GameObject bulletPrefab;
 
     public static int currentAmmo;
-    public static int maxAmmo = 24;
+    public static int maxAmmo = 12;
     public static int loadedAmmo = 1;
     [SerializeField]
     float _reloadSpeed = 3.2f;
@@ -65,12 +65,14 @@ public class Musket : MonoBehaviour
     //shoots the musket
     void Shoot()
     {
+        if(currentAmmo > 0) { 
         _canFire = false;
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         //play firing anim
         //play firing sound
         loadedAmmo--;
         StartCoroutine(WeaponReload());
+        }
     }
 
     //waits an amount of seconds before allowing the weapon to be fired again
@@ -81,9 +83,11 @@ public class Musket : MonoBehaviour
         _canFire = false;
         //play reload animation
         //play reload sounds
-        yield return new WaitForSeconds(_reloadSpeed);
         Debug.Log("Reload Over");
         currentAmmo--;
+        yield return new WaitForSeconds(_reloadSpeed);
+        
+
         loadedAmmo = 1;
         _canFire = true;
         _isReloading = false;
