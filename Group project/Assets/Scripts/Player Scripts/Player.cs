@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float movementSpeed;
     public float jumpSpeed;
     Image healthBar;
+    public GameObject groundCheck;
 
     public static float currentHealth;
     public static float maxHealth = 100;
@@ -34,6 +35,16 @@ public class Player : MonoBehaviour
 
     public bool invincible;
     private float invincibilityTime = 3f;
+
+    //check if we are sliding
+    bool isSliding = false;
+    float slideTimer = 0f; //store the slide time
+    public float maxSlideTime = 1.5f; //set the maximum time to slide
+    public float slideSpeed = 10f;
+
+    bool keepSliding = false;
+
+
 
     public float knockback; //amount of force applied when the player gets knocked back
     public float knockbackLength; //how long the player gets knocked back for in terms of time
@@ -83,7 +94,7 @@ public class Player : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isSliding)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
             
@@ -92,6 +103,45 @@ public class Player : MonoBehaviour
 
         myAnimator.SetFloat("AirSpeed", Mathf.Abs(vertical));
 
+
+        if(Input.GetButtonDown("Slide") && !isSliding && isGrounded)
+        {
+            slideTimer = 0f;
+            myAnimator.SetBool("isSliding", true);
+            //gameObject.transform.localScale = new Vector3(5.0f, 5.0f, 1.0f);
+            //myRigidbody.AddForce(new Vector2(2f, 0f), ForceMode2D.Impulse);
+
+            if (facingRight) { 
+            myRigidbody.velocity = new Vector2(slideSpeed, 0f);
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector2(-slideSpeed, 0f);
+            }
+
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            
+            //groundCheck.GetComponent<BoxCollider2D>().enabled = false;
+
+            isSliding = true;
+        }
+
+        if(isSliding)
+        {
+            slideTimer += Time.deltaTime;
+
+            if(slideTimer > maxSlideTime && !keepSliding)
+            {
+                isSliding = false;
+
+                myAnimator.SetBool("isSliding", false);
+                //gameObject.transform.localScale = new Vector3(10.0f, 10.0f, 1.0f);
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                myRigidbody.velocity = Vector2.zero;
+                //groundCheck.GetComponent<BoxCollider2D>().enabled = true;
+
+            }
+        }
         
         
     }
@@ -114,7 +164,7 @@ public class Player : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////Player movement start
     private void HandleMovement(float horizontal)
     { 
-        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding)
         {
             if(knockbackCount <= 0) { 
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
@@ -141,7 +191,7 @@ public class Player : MonoBehaviour
  
     private void Flip(float horizontal)
     {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding)
         {
             facingRight = !facingRight;
 
@@ -220,5 +270,25 @@ public class Player : MonoBehaviour
     }
 
 
+    
+
+
+  
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy")
+        {
+            keepSliding = true;
+       }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy")
+        {
+            keepSliding = false;
+        }
+    }
 
 }

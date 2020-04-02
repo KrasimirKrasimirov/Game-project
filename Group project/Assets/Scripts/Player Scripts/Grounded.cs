@@ -21,6 +21,12 @@ public class Grounded : MonoBehaviour
             player.GetComponent<Player>().myAnimator.SetBool("Grounded", true);
          
         }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
+
+        }
     }
 
     private void OnCollisionStay(Collision collision)
