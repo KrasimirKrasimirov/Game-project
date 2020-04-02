@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
                 myRigidbody.velocity = new Vector2(-slideSpeed, 0f);
             }
 
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<PolygonCollider2D>().enabled = false;
             
             //groundCheck.GetComponent<BoxCollider2D>().enabled = false;
 
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
 
                 myAnimator.SetBool("isSliding", false);
                 //gameObject.transform.localScale = new Vector3(10.0f, 10.0f, 1.0f);
-                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                gameObject.GetComponent<PolygonCollider2D>().enabled = true;
                 myRigidbody.velocity = Vector2.zero;
                 //groundCheck.GetComponent<BoxCollider2D>().enabled = true;
 
