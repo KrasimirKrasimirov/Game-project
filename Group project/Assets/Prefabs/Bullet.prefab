@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!58 &8542940906165339357
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +134,4 @@ MonoBehaviour:
   speed: 40
   damage: 75
   rb: {fileID: 5669117346160380657}
+  player: {fileID: 0}
