@@ -19,13 +19,21 @@ public class Grounded : MonoBehaviour
         {
             player.GetComponent<Player>().isGrounded = true;
             player.GetComponent<Player>().myAnimator.SetBool("Grounded", true);
-         
+           
+
+            if(collision.collider.name == "Slope")
+            {
+                Debug.Log(collision.collider.name);
+                player.GetComponent<Player>().myRigidbody.velocity = new Vector2(2f, -2f);
+                player.GetComponent<Player>().isSliding = true;
+                player.GetComponent<Player>().keepSliding = true;
+            }
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
-
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>());
+            Debug.Log("hello");
         }
     }
 
@@ -34,6 +42,14 @@ public class Grounded : MonoBehaviour
         player.GetComponent<Player>().isGrounded = true;
         player.GetComponent<Enemies>().isGrounded = true;
         //Player.GetComponent<Player>().myAnimator.SetBool("Grounded", true);
+
+        if (collision.collider.name == "Slope")
+        {
+            Debug.Log(collision.collider.name);
+            player.GetComponent<Player>().myRigidbody.velocity = new Vector2(2f, -2f);
+            player.GetComponent<Player>().isSliding = true;
+            player.GetComponent<Player>().keepSliding = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -42,6 +58,15 @@ public class Grounded : MonoBehaviour
         {
             player.GetComponent<Player>().isGrounded = false;
             player.GetComponent<Player>().myAnimator.SetBool("Grounded", false);
+
+
+            if (collision.collider.name == "Slope")
+            {
+                player.GetComponent<Player>().isSliding = false;
+                player.GetComponent<Player>().keepSliding = false;
+            }
         }
+
+        
     }
 }

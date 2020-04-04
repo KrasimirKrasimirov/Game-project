@@ -11,6 +11,7 @@ TagManager:
   - HealingAngel
   - AmmoAngel
   - PatrolPoint
+  - Slide
   layers:
   - Default
   - TransparentFX

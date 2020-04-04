@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody2D myRigidbody;
+    public Rigidbody2D myRigidbody;
 
     public Animator myAnimator;
     public bool isGrounded;
@@ -37,12 +37,12 @@ public class Player : MonoBehaviour
     private float invincibilityTime = 3f;
 
     //check if we are sliding
-    bool isSliding = false;
+    public bool isSliding = false;
     float slideTimer = 0f; //store the slide time
     public float maxSlideTime = 1.5f; //set the maximum time to slide
     public float slideSpeed = 10f;
 
-    bool keepSliding = false;
+    public bool keepSliding = false;
 
 
 
@@ -277,15 +277,23 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy")
+        if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
         {
             keepSliding = true;
        }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
+        {
+            keepSliding = true;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy")
+        if ((collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy") && collision.name != "Slope")
         {
             keepSliding = false;
         }
