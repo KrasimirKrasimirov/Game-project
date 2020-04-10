@@ -223,8 +223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b726e66cc91a3494789ded598da61b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRigidbody: {fileID: 0}
   myAnimator: {fileID: 0}
   isGrounded: 0
+  isDashAttacking: 0
+  isJumping: 0
   movementSpeed: 10
   jumpSpeed: 22
   groundCheck: {fileID: 1943394156383696}
@@ -237,8 +240,10 @@ MonoBehaviour:
   attackDamage: 40
   attackRate: 2
   invincible: 0
+  isSliding: 0
   maxSlideTime: 0.5
   slideSpeed: 10
+  keepSliding: 0
   knockback: 10
   knockbackLength: 0.05
   knockbackCount: 0
@@ -304,7 +309,7 @@ GameObject:
   - component: {fileID: 4269114208525818}
   - component: {fileID: 61368513597639598}
   - component: {fileID: 1081754389}
-  - component: {fileID: 1874163600}
+  - component: {fileID: 822616180}
   m_Layer: 0
   m_Name: GroundSensor
   m_TagString: Untagged
@@ -364,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62a7c9740cca684da6f0c4c2bba18be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &1874163600
+--- !u!60 &822616180
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,11 +396,11 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.005016001, y: 0.023669932}
       - {x: -0.008372077, y: 0.023256607}
-      - {x: -0.11933876, y: 0.031491823}
+      - {x: -0.081546605, y: 0.022770379}
       - {x: -0.05058733, y: 0.020342942}
       - {x: -0.009893211, y: -0.0042732507}
       - {x: -0.00283552, y: 0.020838998}
-      - {x: 0.08406276, y: 0.03196666}
+      - {x: 0.06662082, y: 0.020338222}
 --- !u!1 &3000069611262557452
 GameObject:
   m_ObjectHideFlags: 0

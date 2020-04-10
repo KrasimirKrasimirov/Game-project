@@ -19,9 +19,10 @@ public class Grounded : MonoBehaviour
         {
             player.GetComponent<Player>().isGrounded = true;
             player.GetComponent<Player>().myAnimator.SetBool("Grounded", true);
-           
+            player.GetComponent<Player>().isJumping = false;
 
-            if(collision.collider.name == "Slope")
+
+            if (collision.collider.name == "Slope")
             {
                 Debug.Log(collision.collider.name);
                 player.GetComponent<Player>().myRigidbody.velocity = new Vector2(2f, -2f);

@@ -11,6 +11,18 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     public static bool isHurt;
 
+    float furtherJumpIfRunning;
+
+    //bool dashAttack;
+    public bool isDashAttacking;
+    float dashAttackTimer = 0f;
+    float maxDashAttackTime = 0.5f;
+    float dashAttackSpeed = 15f;
+
+    public bool isJumping;
+    bool jumpKeyHeld;
+    Vector2 counterJumpForce;
+
     [SerializeField]
     public float movementSpeed;
     public float jumpSpeed;
@@ -57,12 +69,14 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
         movementSpeed = 10.0f;
-        jumpSpeed = 22.0f;
+        jumpSpeed = 30.0f;
         isGrounded = false;
         facingRight = true;
         invincible = false;
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        counterJumpForce = new Vector2(0f, -30f);
+
         
     }
 
@@ -73,6 +87,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        
         //healthBar.fillAmount = currentHealth / 100;
         //Debug.Log(currentHealth);
         if (currentHealth <= 0)
@@ -94,14 +109,82 @@ public class Player : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isSliding)
+        if(myRigidbody.velocity.x != 0)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
-            
-            
+            furtherJumpIfRunning = 1.2f;
+        }
+        else
+        {
+            furtherJumpIfRunning = 1f;
+        }
+
+
+
+        if(Input.GetKeyDown(KeyCode.F) && !isDashAttacking && isGrounded)
+        {
+            DashAttack();
+        }
+
+        if (isDashAttacking)
+        {
+            dashAttackTimer += Time.deltaTime;
+
+            if (dashAttackTimer > maxDashAttackTime)
+            {
+                isDashAttacking = false;
+
+               // myAnimator.SetBool("isDashAttacking", false);
+
+                myRigidbody.velocity = Vector2.zero;
+            }
+
+
+
+
+            //detect enemies in range of attack
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+            //damage enemy
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<Enemies>().Hurt(attackDamage);
+
+                isDashAttacking = false;
+            }
+        }
+
+       
+           
+        
+        
+
+
+
+
+
+
+        //if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isSliding)
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            jumpKeyHeld = true;
+            if(isGrounded && !isSliding)
+            {
+                isJumping = true;
+                myRigidbody.AddForce(Vector2.up * jumpSpeed * myRigidbody.mass * furtherJumpIfRunning, ForceMode2D.Impulse);
+            }
+            //gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
+
+        }
+        else if (Input.GetKeyUp(KeyCode.W))
+        {
+            jumpKeyHeld = false;
         }
 
         myAnimator.SetFloat("AirSpeed", Mathf.Abs(vertical));
+
+
+
+
 
 
         if(Input.GetButtonDown("Slide") && !isSliding && isGrounded)
@@ -111,12 +194,12 @@ public class Player : MonoBehaviour
             //gameObject.transform.localScale = new Vector3(5.0f, 5.0f, 1.0f);
             //myRigidbody.AddForce(new Vector2(2f, 0f), ForceMode2D.Impulse);
 
-            if (facingRight) { 
-            myRigidbody.velocity = new Vector2(slideSpeed, 0f);
+            if (facingRight) {
+                myRigidbody.AddForce(new Vector2(slideSpeed, 0f), ForceMode2D.Impulse);
             }
             else
             {
-                myRigidbody.velocity = new Vector2(-slideSpeed, 0f);
+                myRigidbody.AddForce(new Vector2(-slideSpeed, 0f), ForceMode2D.Impulse);
             }
 
             gameObject.GetComponent<PolygonCollider2D>().enabled = false;
@@ -158,13 +241,22 @@ public class Player : MonoBehaviour
         //movement end
 
 
+        if (isJumping)
+        {
+            if (!jumpKeyHeld && Vector2.Dot(myRigidbody.velocity, Vector2.up) > 0)
+            {
+                myRigidbody.AddForce(counterJumpForce * myRigidbody.mass);
+            }
+            Debug.Log(counterJumpForce);
+        }
+
     }
 
    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////Player movement start
     private void HandleMovement(float horizontal)
     { 
-        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding)
+        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
         {
             if(knockbackCount <= 0) { 
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
@@ -186,12 +278,13 @@ public class Player : MonoBehaviour
 
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
+        
     }
 
  
     private void Flip(float horizontal)
     {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding)
+        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
         {
             facingRight = !facingRight;
 
@@ -219,6 +312,25 @@ public class Player : MonoBehaviour
         {
             enemy.GetComponent<Enemies>().Hurt(attackDamage);
         }
+    }
+
+    void DashAttack()
+    {
+        dashAttackTimer = 0f;
+        //myAnimator.SetBool("isDashAttacking", true);
+
+        if (facingRight)
+        {
+            myRigidbody.AddForce(new Vector2(dashAttackSpeed, 0f), ForceMode2D.Impulse);
+        }
+        else
+        {
+            myRigidbody.AddForce(new Vector2(-dashAttackSpeed, 0f), ForceMode2D.Impulse);
+        }
+
+        isDashAttacking = true;
+
+        
     }
 
     private void OnDrawGizmosSelected()
