@@ -24,7 +24,7 @@ public class Musket : MonoBehaviour
     {
         //PointToMouse();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             if(loadedAmmo > 0)
             {
