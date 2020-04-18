@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
         movementSpeed = 10.0f;
-        jumpSpeed = 30.0f;
+        jumpSpeed = 25.0f;
         isGrounded = false;
         facingRight = true;
         invincible = false;
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 
         if(myRigidbody.velocity.x != 0)
         {
-            furtherJumpIfRunning = 1.2f;
+            furtherJumpIfRunning = 1.05f;
         }
         else
         {
@@ -213,19 +213,6 @@ public class Player : MonoBehaviour
 
         if(isSliding)
         {
-
-            if (facingRight)
-            {
-               
-            }
-            else if(!facingRight)
-            {
-                
-            }
-
-
-
-
             slideTimer += Time.deltaTime;
 
             if(slideTimer > maxSlideTime && !keepSliding)
@@ -299,7 +286,7 @@ public class Player : MonoBehaviour
  
     private void Flip(float horizontal)
     {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
+        if(((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight)) && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
         {
             facingRight = !facingRight;
 
@@ -337,10 +324,12 @@ public class Player : MonoBehaviour
         if (facingRight)
         {
             myRigidbody.AddForce(new Vector2(dashAttackSpeed, 0f), ForceMode2D.Impulse);
+            myRigidbody.velocity = new Vector2(dashAttackSpeed, myRigidbody.velocity.y);
         }
         else
         {
             myRigidbody.AddForce(new Vector2(-dashAttackSpeed, 0f), ForceMode2D.Impulse);
+            myRigidbody.velocity = new Vector2(-dashAttackSpeed, myRigidbody.velocity.y);
         }
 
         isDashAttacking = true;

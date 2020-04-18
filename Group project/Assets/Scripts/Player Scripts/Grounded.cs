@@ -33,7 +33,7 @@ public class Grounded : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>());
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
             Debug.Log("hello");
         }
     }

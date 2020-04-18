@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 61252362154681264}
   - component: {fileID: 693247193}
   - component: {fileID: 482423410}
-  - component: {fileID: 1626527210}
+  - component: {fileID: 1031507066}
   m_Layer: 9
   m_Name: LightBandit
   m_TagString: Player
@@ -264,7 +264,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 431246409854723524, guid: c9e1dd5fb437f9f4f98616710207eeb3,
     type: 3}
   _reloadSpeed: 3.2
---- !u!60 &1626527210
+--- !u!60 &1031507066
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,12 +292,13 @@ PolygonCollider2D:
     - - {x: 0.023288464, y: 0.37957475}
       - {x: -0.03315363, y: 0.38143155}
       - {x: -0.059862282, y: 0.26192302}
-      - {x: -0.073578954, y: 0.16586106}
-      - {x: -0.07403481, y: 0.13807702}
-      - {x: -0.082863145, y: 0.068703175}
-      - {x: 0.0810063, y: 0.07014785}
-      - {x: 0.105726294, y: 0.15899365}
-      - {x: 0.09087157, y: 0.26928422}
+      - {x: -0.06868744, y: 0.16504584}
+      - {x: -0.07054138, y: 0.16248666}
+      - {x: -0.071588896, y: 0.13807698}
+      - {x: -0.072265625, y: 0.065442376}
+      - {x: 0.07613678, y: 0.06690178}
+      - {x: 0.07651138, y: 0.15412436}
+      - {x: 0.06895981, y: 0.26116887}
 --- !u!1 &1943394156383696
 GameObject:
   m_ObjectHideFlags: 0
