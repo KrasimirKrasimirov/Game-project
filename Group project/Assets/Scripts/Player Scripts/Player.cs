@@ -211,6 +211,19 @@ public class Player : MonoBehaviour
 
         if(isSliding)
         {
+
+            if (facingRight)
+            {
+                myRigidbody.velocity = new Vector2(slideSpeed, myRigidbody.velocity.y);
+            }
+            else if(!facingRight)
+            {
+                myRigidbody.velocity = new Vector2(-slideSpeed, myRigidbody.velocity.y);
+            }
+
+
+
+
             slideTimer += Time.deltaTime;
 
             if(slideTimer > maxSlideTime && !keepSliding)
@@ -255,7 +268,7 @@ public class Player : MonoBehaviour
    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////Player movement start
     private void HandleMovement(float horizontal)
-    { 
+    {
         if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
         {
             if(knockbackCount <= 0) { 
