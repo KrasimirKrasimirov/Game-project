@@ -196,10 +196,12 @@ public class Player : MonoBehaviour
 
             if (facingRight) {
                 myRigidbody.AddForce(new Vector2(slideSpeed, 0f), ForceMode2D.Impulse);
+                myRigidbody.velocity = new Vector2(slideSpeed, myRigidbody.velocity.y);
             }
             else
             {
                 myRigidbody.AddForce(new Vector2(-slideSpeed, 0f), ForceMode2D.Impulse);
+                myRigidbody.velocity = new Vector2(-slideSpeed, myRigidbody.velocity.y);
             }
 
             gameObject.GetComponent<PolygonCollider2D>().enabled = false;
@@ -214,11 +216,11 @@ public class Player : MonoBehaviour
 
             if (facingRight)
             {
-                myRigidbody.velocity = new Vector2(slideSpeed, myRigidbody.velocity.y);
+               
             }
             else if(!facingRight)
             {
-                myRigidbody.velocity = new Vector2(-slideSpeed, myRigidbody.velocity.y);
+                
             }
 
 
