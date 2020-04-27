@@ -12,6 +12,7 @@ TagManager:
   - AmmoAngel
   - PatrolPoint
   - Slide
+  - Transition
   layers:
   - Default
   - TransparentFX

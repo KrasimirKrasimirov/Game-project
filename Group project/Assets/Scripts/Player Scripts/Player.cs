@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
         movementSpeed = 10.0f;
-        jumpSpeed = 25.0f;
+        jumpSpeed = 27.0f;
         isGrounded = false;
         facingRight = true;
         invincible = false;
@@ -396,7 +396,13 @@ public class Player : MonoBehaviour
         if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
         {
             keepSliding = true;
-       }
+        }
+
+        if (collision.gameObject.tag == "Transition")
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>());
+            Debug.Log("hello");
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
