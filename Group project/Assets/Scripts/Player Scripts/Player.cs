@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             jumpKeyHeld = true;
-            if(isGrounded && !isSliding)
+            if(isGrounded && !isSliding && !isJumping)
             {
                 isJumping = true;
                 myRigidbody.AddForce(Vector2.up * jumpSpeed * myRigidbody.mass * furtherJumpIfRunning, ForceMode2D.Impulse);
@@ -249,9 +249,7 @@ public class Player : MonoBehaviour
             {
                 myRigidbody.AddForce(counterJumpForce * myRigidbody.mass);
             }
-            Debug.Log(counterJumpForce);
         }
-
     }
 
    
