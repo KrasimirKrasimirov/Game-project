@@ -26,12 +26,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     public float movementSpeed;
     public float jumpSpeed;
-    Image healthBar;
     public GameObject groundCheck;
 
     public static float currentHealth;
     public static float maxHealth = 100;
     public Button restartButton;
+    public Image healthBar;
 
 
     public Transform attackPoint;
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         
-        //healthBar.fillAmount = currentHealth / 100;
+        healthBar.fillAmount = currentHealth / 100;
         //Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
