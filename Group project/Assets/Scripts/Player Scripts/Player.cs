@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         counterJumpForce = new Vector2(0f, -30f);
 
-        
+        SetTransitions();
     }
 
     public Animator getAnimator()
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+
         healthBar.fillAmount = currentHealth / 100;
         //Debug.Log(currentHealth);
         if (currentHealth <= 0)
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
 
         float vertical = Input.GetAxis("Vertical");
 
-        if(Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime)
         {
             if (Input.GetKeyDown(KeyCode.Space) && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
             {
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 
 
 
-        if(myRigidbody.velocity.x != 0)
+        if (myRigidbody.velocity.x != 0)
         {
             furtherJumpIfRunning = 1.05f;
         }
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
 
 
-        if(Input.GetKeyDown(KeyCode.F) && !isDashAttacking && isGrounded)
+        if (Input.GetKeyDown(KeyCode.F) && !isDashAttacking && isGrounded)
         {
             DashAttack();
         }
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
             {
                 isDashAttacking = false;
 
-               // myAnimator.SetBool("isDashAttacking", false);
+                // myAnimator.SetBool("isDashAttacking", false);
 
                 myRigidbody.velocity = Vector2.zero;
             }
@@ -153,10 +153,10 @@ public class Player : MonoBehaviour
             }
         }
 
-       
-           
-        
-        
+
+
+
+
 
 
 
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             jumpKeyHeld = true;
-            if(isGrounded && !isSliding && !isJumping)
+            if (isGrounded && !isSliding && !isJumping)
             {
                 isJumping = true;
                 myRigidbody.AddForce(Vector2.up * jumpSpeed * myRigidbody.mass * furtherJumpIfRunning, ForceMode2D.Impulse);
@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
 
 
 
-        if(Input.GetButtonDown("Slide") && !isSliding && isGrounded)
+        if (Input.GetButtonDown("Slide") && !isSliding && isGrounded)
         {
             slideTimer = 0f;
             myAnimator.SetBool("isSliding", true);
@@ -205,17 +205,17 @@ public class Player : MonoBehaviour
             }
 
             gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-            
+
             //groundCheck.GetComponent<BoxCollider2D>().enabled = false;
 
             isSliding = true;
         }
 
-        if(isSliding)
+        if (isSliding)
         {
             slideTimer += Time.deltaTime;
 
-            if(slideTimer > maxSlideTime && !keepSliding)
+            if (slideTimer > maxSlideTime && !keepSliding)
             {
                 isSliding = false;
 
@@ -227,8 +227,8 @@ public class Player : MonoBehaviour
 
             }
         }
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -252,24 +252,24 @@ public class Player : MonoBehaviour
         }
     }
 
-   
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////Player movement start
     private void HandleMovement(float horizontal)
     {
-        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
+        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
         {
-            if(knockbackCount <= 0) { 
-            myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
+            if (knockbackCount <= 0) {
+                myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
             }
             else
             {
                 if (knockFromRight)
                 {
-                    myRigidbody.velocity = new Vector2(-knockback, knockback/4);
+                    myRigidbody.velocity = new Vector2(-knockback, knockback / 4);
                 }
                 if (!knockFromRight)
                 {
-                    myRigidbody.velocity = new Vector2(knockback, knockback/4);
+                    myRigidbody.velocity = new Vector2(knockback, knockback / 4);
                 }
                 knockbackCount -= Time.deltaTime;
             }
@@ -278,13 +278,13 @@ public class Player : MonoBehaviour
 
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
-        
+
     }
 
- 
+
     private void Flip(float horizontal)
     {
-        if(((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight)) && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
+        if (((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight)) && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && !isSliding && !isDashAttacking)
         {
             facingRight = !facingRight;
 
@@ -332,12 +332,12 @@ public class Player : MonoBehaviour
 
         isDashAttacking = true;
 
-        
+
     }
 
     private void OnDrawGizmosSelected()
     {
-        if(attackPoint == null)
+        if (attackPoint == null)
         {
             return;
         }
@@ -361,11 +361,11 @@ public class Player : MonoBehaviour
             currentHealth -= damage;
 
             knockbackCount = knockbackLength;
-           
+
             StartCoroutine(Invulnerability());
         }
 
-        
+
 
         myAnimator.SetBool("Hurt", true);
 
@@ -384,7 +384,15 @@ public class Player : MonoBehaviour
     }
 
 
-    
+    private void SetTransitions()
+    {
+        GameObject[] transitionObjects = GameObject.FindGameObjectsWithTag("Transition");
+
+        foreach (GameObject obj in transitionObjects)
+        {
+            Physics2D.IgnoreCollision(obj.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>());
+        }
+    }
 
 
   
@@ -394,12 +402,6 @@ public class Player : MonoBehaviour
         if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
         {
             keepSliding = true;
-        }
-
-        if (collision.gameObject.tag == "Transition")
-        {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>());
-            Debug.Log("hello");
         }
     }
 

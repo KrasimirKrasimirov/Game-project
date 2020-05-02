@@ -71,6 +71,18 @@ public class Grounded : MonoBehaviour
                 case "Transition 8":
                     player.GetComponent<Player>().transform.position = new Vector2(650.61f, 21.16f);
                     break;
+                case "Transition 9":
+                    player.GetComponent<Player>().transform.position = new Vector2(562.97f, -144.56f);
+                    break;
+                case "Transition 10":
+                    player.GetComponent<Player>().transform.position = new Vector2(570.67f, -180f);
+                    break;
+                case "Transition 11":
+                    player.GetComponent<Player>().transform.position = new Vector2(579.9f, -244.3f);
+                    break;
+                case "Transition 12":
+                    player.GetComponent<Player>().transform.position = new Vector2(573.86f, -255.65f);
+                    break;
             }
             StartCoroutine(FinishTranisiton());
         }
