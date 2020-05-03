@@ -85,6 +85,13 @@ public class Player : MonoBehaviour
         counterJumpForce = new Vector2(0f, -30f);
 
         listPolCols = gameObject.GetComponents<PolygonCollider2D>();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            
+            Physics2D.IgnoreCollision(enemy.GetComponent<BoxCollider2D>(), listPolCols[3]);
+        }
 
         SetTransitions();
     }
@@ -102,25 +109,11 @@ public class Player : MonoBehaviour
             isIdle = true;
             //isRunning = false;
         }
-        else if ((myRigidbody.velocity.x > 0 || myRigidbody.velocity.x < 0) && !isSliding && !isJumping)
-        {
-            //isRunning = true;
-            //isIdle = false;
-            //isSliding = false;
-        }
-        
-        //if (isSliding && !isJumping)
-        //{
-         //   isIdle = false;
-          //  isRunning = false;
-        //}
+       
 
         if (this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Jump"))
         {
             isIdle = false;
-            //isRunning = false;
-            //isSliding = false;
-           // keepSliding = false;
         }
 
         
@@ -138,14 +131,15 @@ public class Player : MonoBehaviour
             listPolCols[1].enabled = false; //idle collider
             listPolCols[2].enabled = false; //attack collider
             listPolCols[3].enabled = false; //slide collider
+
+           // Debug.Log("---------------------" + groundCheck.transform.Find("listBoxCols"));
+           // Debug.Log("---------------------" + groundCheck.transform.GetComponent<Grounded>().listBoxCols);
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[0].enabled = false;
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[1].enabled = true;
         }
         
         if(this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
-            //isIdle = false;
-            //isRunning = false;
-            //isJumping = false;
-            // isSliding = false;
             isIdle = false;
             listPolCols[0].enabled = false;
             listPolCols[1].enabled = false;
@@ -154,9 +148,6 @@ public class Player : MonoBehaviour
         }
         if(this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Slide"))
         {
-            //isIdle = false;
-            //isRunning = false;
-            // isJumping = false;
             isIdle = false;
             listPolCols[0].enabled = false;
             listPolCols[1].enabled = false;
@@ -177,7 +168,6 @@ public class Player : MonoBehaviour
         }
 
         healthBar.fillAmount = currentHealth / 100;
-        //Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -280,8 +270,6 @@ public class Player : MonoBehaviour
         {
             slideTimer = 0f;
             myAnimator.SetBool("isSliding", true);
-            //gameObject.transform.localScale = new Vector3(5.0f, 5.0f, 1.0f);
-            //myRigidbody.AddForce(new Vector2(2f, 0f), ForceMode2D.Impulse);
 
             if (facingRight) {
                 myRigidbody.AddForce(new Vector2(slideSpeed, 0f), ForceMode2D.Impulse);
@@ -293,9 +281,6 @@ public class Player : MonoBehaviour
                 myRigidbody.velocity = new Vector2(-slideSpeed, myRigidbody.velocity.y);
             }
 
-            //gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-
-            //groundCheck.GetComponent<BoxCollider2D>().enabled = false;
 
             isSliding = true;
             StartCoroutine(FinishSliding());
@@ -312,6 +297,9 @@ public class Player : MonoBehaviour
                 
 
                 myAnimator.SetBool("isSliding", false);
+                myAnimator.Play("Idle");
+
+
                 //gameObject.transform.localScale = new Vector3(10.0f, 10.0f, 1.0f);
                 //gameObject.GetComponent<PolygonCollider2D>().enabled = true;
                 //myRigidbody.velocity = Vector2.zero;
@@ -491,6 +479,8 @@ public class Player : MonoBehaviour
     {
         if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
         {
+            Debug.Log("start");
+            Debug.Log(myRigidbody.velocity);
             keepSliding = true;
         }
     }
@@ -499,6 +489,8 @@ public class Player : MonoBehaviour
     {
         if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
         {
+            Debug.Log("middle");
+            Debug.Log(myRigidbody.velocity);
             keepSliding = true;
         }
     }
@@ -507,15 +499,15 @@ public class Player : MonoBehaviour
     {
         if ((collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy") && collision.name != "Slope")
         {
+            
             keepSliding = false;
         }
     }
 
+ 
+
     IEnumerator FinishSliding()
     {
-
-
-
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 1.0f)
         {
             isSliding = true;
@@ -526,8 +518,7 @@ public class Player : MonoBehaviour
             listPolCols[3].enabled = true;
             yield return null;
         }
-
-
+        //myRigidbody.velocity.x = 0;
+        //myRigidbody.velocity = Vector2.zero;
     }
-
 }

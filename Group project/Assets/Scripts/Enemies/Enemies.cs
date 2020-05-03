@@ -7,7 +7,7 @@ public class Enemies : MonoBehaviour
     public Animator animator;
 
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
 
 
     public float patrolSpeed = 2f;

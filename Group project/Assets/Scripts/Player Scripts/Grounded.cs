@@ -7,11 +7,23 @@ public class Grounded : MonoBehaviour
 {
     GameObject player;
     GameObject transition;
+
+    public BoxCollider2D[] listBoxCols;
     // Start is called before the first frame update
     void Start()
     {
         player = gameObject.transform.parent.gameObject;
         transition = GameObject.Find("Canvas/TransitionScreen");
+
+        listBoxCols = gameObject.GetComponents<BoxCollider2D>();
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+
+            Physics2D.IgnoreCollision(enemy.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
+        }
     }
 
 
@@ -36,12 +48,7 @@ public class Grounded : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
-            Debug.Log("hello");
-        }
-
+       
         if (collision.gameObject.tag == "Transition")
         {
            
@@ -60,10 +67,10 @@ public class Grounded : MonoBehaviour
                     player.GetComponent<Player>().transform.position = new Vector2(397.5f, 20.7f);
                     break;
                 case "Transition 4":
-                    player.GetComponent<Player>().transform.position = new Vector2(455.1f, 32.8f);
+                    player.GetComponent<Player>().transform.position = new Vector2(455.1f, 35.5f);
                     break;
                 case "Transition 5":
-                    player.GetComponent<Player>().transform.position = new Vector2(448.8f, -4.3f);
+                    player.GetComponent<Player>().transform.position = new Vector2(449.9f, -1.7f);
                     break;
                 case "Transition 6":
                     player.GetComponent<Player>().transform.position = new Vector2(500.4f, 38.5f);
