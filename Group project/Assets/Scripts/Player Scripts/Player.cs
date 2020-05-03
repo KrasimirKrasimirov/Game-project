@@ -56,12 +56,19 @@ public class Player : MonoBehaviour
 
     public bool keepSliding = false;
 
+    public CompositeCollider2D tileMapCollider;
+
 
 
     public float knockback; //amount of force applied when the player gets knocked back
     public float knockbackLength; //how long the player gets knocked back for in terms of time
     public float knockbackCount; //counts down the knockbacck
     public bool knockFromRight;
+
+    public bool isRunning;
+    public bool isIdle;
+
+    public PolygonCollider2D[] listPolCols;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +84,8 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         counterJumpForce = new Vector2(0f, -30f);
 
+        listPolCols = gameObject.GetComponents<PolygonCollider2D>();
+
         SetTransitions();
     }
 
@@ -88,12 +97,92 @@ public class Player : MonoBehaviour
     void Update()
     {
 
+        if (myRigidbody.velocity.x == 0 && !isSliding && !isJumping)
+        {
+            isIdle = true;
+            //isRunning = false;
+        }
+        else if ((myRigidbody.velocity.x > 0 || myRigidbody.velocity.x < 0) && !isSliding && !isJumping)
+        {
+            //isRunning = true;
+            //isIdle = false;
+            //isSliding = false;
+        }
+        
+        //if (isSliding && !isJumping)
+        //{
+         //   isIdle = false;
+          //  isRunning = false;
+        //}
+
+        if (this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Jump"))
+        {
+            isIdle = false;
+            //isRunning = false;
+            //isSliding = false;
+           // keepSliding = false;
+        }
+
+        
+
+        if (this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Run"))
+        {
+            isIdle = false;
+        }
+
+
+        if ((this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Run") || this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Jump")) && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Slide"))
+        {
+            isIdle = false;
+            listPolCols[0].enabled = true; //run and jump collider
+            listPolCols[1].enabled = false; //idle collider
+            listPolCols[2].enabled = false; //attack collider
+            listPolCols[3].enabled = false; //slide collider
+        }
+        
+        if(this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            //isIdle = false;
+            //isRunning = false;
+            //isJumping = false;
+            // isSliding = false;
+            isIdle = false;
+            listPolCols[0].enabled = false;
+            listPolCols[1].enabled = false;
+            listPolCols[2].enabled = true;
+            listPolCols[3].enabled = false;
+        }
+        if(this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Slide"))
+        {
+            //isIdle = false;
+            //isRunning = false;
+            // isJumping = false;
+            isIdle = false;
+            listPolCols[0].enabled = false;
+            listPolCols[1].enabled = false;
+            listPolCols[2].enabled = false;
+            listPolCols[3].enabled = true;
+
+            
+        }
+
+
+        if (isIdle)
+        {
+            Debug.Log("idle");
+            listPolCols[0].enabled = false;
+            listPolCols[1].enabled = true;
+            listPolCols[2].enabled = false;
+            listPolCols[3].enabled = false;
+        }
+
         healthBar.fillAmount = currentHealth / 100;
         //Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
         }
+
 
 
         float vertical = Input.GetAxis("Vertical");
@@ -204,11 +293,12 @@ public class Player : MonoBehaviour
                 myRigidbody.velocity = new Vector2(-slideSpeed, myRigidbody.velocity.y);
             }
 
-            gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+            //gameObject.GetComponent<PolygonCollider2D>().enabled = false;
 
             //groundCheck.GetComponent<BoxCollider2D>().enabled = false;
 
             isSliding = true;
+            StartCoroutine(FinishSliding());
         }
 
         if (isSliding)
@@ -219,11 +309,14 @@ public class Player : MonoBehaviour
             {
                 isSliding = false;
 
+                
+
                 myAnimator.SetBool("isSliding", false);
                 //gameObject.transform.localScale = new Vector3(10.0f, 10.0f, 1.0f);
-                gameObject.GetComponent<PolygonCollider2D>().enabled = true;
-                myRigidbody.velocity = Vector2.zero;
+                //gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+                //myRigidbody.velocity = Vector2.zero;
                 //groundCheck.GetComponent<BoxCollider2D>().enabled = true;
+               
 
             }
         }
@@ -275,10 +368,7 @@ public class Player : MonoBehaviour
             }
         }
 
-
-
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
-
     }
 
 
@@ -304,7 +394,7 @@ public class Player : MonoBehaviour
         myRigidbody.velocity = Vector2.zero;
         //detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
+        
 
 
         //damage enemy
@@ -419,6 +509,25 @@ public class Player : MonoBehaviour
         {
             keepSliding = false;
         }
+    }
+
+    IEnumerator FinishSliding()
+    {
+
+
+
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 1.0f)
+        {
+            isSliding = true;
+            isIdle = false;
+            listPolCols[0].enabled = false;
+            listPolCols[1].enabled = false;
+            listPolCols[2].enabled = false;
+            listPolCols[3].enabled = true;
+            yield return null;
+        }
+
+
     }
 
 }

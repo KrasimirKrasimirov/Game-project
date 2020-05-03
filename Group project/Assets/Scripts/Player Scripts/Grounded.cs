@@ -30,6 +30,9 @@ public class Grounded : MonoBehaviour
                 player.GetComponent<Player>().myRigidbody.velocity = new Vector2(2f, -2f);
                 player.GetComponent<Player>().isSliding = true;
                 player.GetComponent<Player>().keepSliding = true;
+                player.GetComponent<Player>().myAnimator.SetBool("isSliding", true);
+                player.GetComponent<Player>().transform.eulerAngles = new Vector3(0, 0, -45f);
+                player.GetComponent<Player>().transform.position = new Vector2(player.GetComponent<Player>().transform.position.x, player.GetComponent<Player>().transform.position.y + 0.48938f);
             }
         }
 
@@ -78,7 +81,7 @@ public class Grounded : MonoBehaviour
                     player.GetComponent<Player>().transform.position = new Vector2(570.67f, -180f);
                     break;
                 case "Transition 11":
-                    player.GetComponent<Player>().transform.position = new Vector2(579.9f, -244.3f);
+                    player.GetComponent<Player>().transform.position = new Vector2(580.1255f, -242.53f);
                     break;
                 case "Transition 12":
                     player.GetComponent<Player>().transform.position = new Vector2(573.86f, -255.65f);
@@ -122,6 +125,7 @@ public class Grounded : MonoBehaviour
             player.GetComponent<Player>().myRigidbody.velocity = new Vector2(2f, -2f);
             player.GetComponent<Player>().isSliding = true;
             player.GetComponent<Player>().keepSliding = true;
+            player.GetComponent<Player>().myAnimator.SetBool("isSliding", true);
         }
     }
 
@@ -137,6 +141,8 @@ public class Grounded : MonoBehaviour
             {
                 player.GetComponent<Player>().isSliding = false;
                 player.GetComponent<Player>().keepSliding = false;
+                player.GetComponent<Player>().myAnimator.SetBool("isSliding", false);
+                player.GetComponent<Player>().transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
 
