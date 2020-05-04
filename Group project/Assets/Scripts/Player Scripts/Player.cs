@@ -86,12 +86,15 @@ public class Player : MonoBehaviour
 
         listPolCols = gameObject.GetComponents<PolygonCollider2D>();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
 
         foreach (GameObject enemy in enemies)
         {
             
             Physics2D.IgnoreCollision(enemy.GetComponent<BoxCollider2D>(), listPolCols[3]);
         }
+
+        
 
         SetTransitions();
     }
@@ -397,7 +400,14 @@ public class Player : MonoBehaviour
         //damage enemy
         foreach (Collider2D enemy in hitEnemies)
         {
+            if(enemy.name == "HeavyBandit") { 
             enemy.GetComponent<Enemies>().Hurt(attackDamage);
+            }
+
+            if (enemy.name == "WeakSpot")
+            {
+                enemy.GetComponentInParent<ShootingDemon>().Hurt(attackDamage);
+            }
         }
     }
 
@@ -488,8 +498,6 @@ public class Player : MonoBehaviour
     {
         if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
         {
-            Debug.Log("start");
-            Debug.Log(myRigidbody.velocity);
             keepSliding = true;
         }
     }
@@ -498,8 +506,6 @@ public class Player : MonoBehaviour
     {
         if (collision.GetComponent<Collider2D>().tag == "Ground" || collision.GetComponent<Collider2D>().tag == "Enemy" || collision.name == "Slope")
         {
-            Debug.Log("middle");
-            Debug.Log(myRigidbody.velocity);
             keepSliding = true;
         }
     }
@@ -527,7 +533,6 @@ public class Player : MonoBehaviour
             listPolCols[3].enabled = true;
             yield return null;
         }
-        //myRigidbody.velocity.x = 0;
-        //myRigidbody.velocity = Vector2.zero;
     }
+
 }

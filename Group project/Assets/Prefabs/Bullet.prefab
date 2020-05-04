@@ -132,6 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
-  damage: 75
+  damage: 50
   rb: {fileID: 5669117346160380657}
   player: {fileID: 0}

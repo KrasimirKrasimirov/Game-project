@@ -31,18 +31,32 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.tag == "Enemy")
+        if (hitInfo.name == "HeavyBandit")
         {
             Enemies enemy = hitInfo.GetComponent<Enemies>();
             if (enemy != null)
             {
                 enemy.Hurt(damage);
             }
-            Destroy(gameObject);
-        }else if (hitInfo.tag == "Ground" || hitInfo.tag == "Obstacle")
-        {
-            Destroy(gameObject);
         }
+
+        if (hitInfo.name == "ShootingDemon")
+        {
+            ShootingDemon sd = hitInfo.GetComponent<ShootingDemon>();
+            if (sd != null)
+            {
+                sd.Hurt(damage);
+            }
+        }
+
+
+
+
+
+        Destroy(gameObject);
+        
     }
+
+ 
 
 }

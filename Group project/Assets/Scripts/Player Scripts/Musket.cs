@@ -6,6 +6,7 @@ public class Musket : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
+    GameObject thePlayer;
 
     public static int currentAmmo;
     public static int maxAmmo = 12;
@@ -17,7 +18,8 @@ public class Musket : MonoBehaviour
 
     void Start()
     {
-        currentAmmo = maxAmmo;    
+        currentAmmo = maxAmmo;
+        thePlayer = GameObject.Find("Player"); ;
     }
     // Update is called once per frame
     void Update()
@@ -67,7 +69,12 @@ public class Musket : MonoBehaviour
     {
         if(currentAmmo > 0) { 
         _canFire = false;
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+           
+            Debug.Log("fire");
+            StartCoroutine(Stay());
+        
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         //play firing anim
         //play firing sound
         loadedAmmo--;
@@ -91,6 +98,22 @@ public class Musket : MonoBehaviour
         loadedAmmo = 1;
         _canFire = true;
         _isReloading = false;
+    }
+
+    IEnumerator Stay()
+    {
+        Player player = thePlayer.GetComponent<Player>();
+        player.myRigidbody.velocity = Vector2.zero;
+        player.myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        player.myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
+        
+
+        player.myAnimator.SetTrigger("Shoot");
+
+        
+        yield return new WaitForSeconds(0.5f);
+        player.myRigidbody.constraints = RigidbodyConstraints2D.None;
+        player.myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
 }
