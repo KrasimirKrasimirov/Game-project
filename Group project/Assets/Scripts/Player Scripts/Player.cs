@@ -445,9 +445,6 @@ public class Player : MonoBehaviour
     void Die()
     {
         myAnimator.SetTrigger("Death");
-        this.enabled = false;
-        restartButton.gameObject.SetActive(true);
-        Time.timeScale = 0.0f;
     }
 
     public void Hurt(int damage)
