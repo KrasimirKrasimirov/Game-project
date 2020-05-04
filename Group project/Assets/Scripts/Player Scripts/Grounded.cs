@@ -73,25 +73,25 @@ public class Grounded : MonoBehaviour
                     player.GetComponent<Player>().transform.position = new Vector2(449.9f, -1.7f);
                     break;
                 case "Transition 6":
-                    player.GetComponent<Player>().transform.position = new Vector2(500.4f, 38.5f);
+                    player.GetComponent<Player>().transform.position = new Vector2(500.4f, 39.86f);
                     break;
                 case "Transition 7":
-                    player.GetComponent<Player>().transform.position = new Vector2(493.32f, 8.24f);
+                    player.GetComponent<Player>().transform.position = new Vector2(493.32f, 10.46f);
                     break;
                 case "Transition 8":
                     player.GetComponent<Player>().transform.position = new Vector2(650.61f, 21.16f);
                     break;
                 case "Transition 9":
-                    player.GetComponent<Player>().transform.position = new Vector2(562.97f, -144.56f);
+                    player.GetComponent<Player>().transform.position = new Vector2(562.97f, -142.1f);
                     break;
                 case "Transition 10":
-                    player.GetComponent<Player>().transform.position = new Vector2(570.67f, -180f);
+                    player.GetComponent<Player>().transform.position = new Vector2(570.67f, -177.3f);
                     break;
                 case "Transition 11":
-                    player.GetComponent<Player>().transform.position = new Vector2(580.1255f, -242.53f);
+                    player.GetComponent<Player>().transform.position = new Vector2(580.1255f, -241.8f);
                     break;
                 case "Transition 12":
-                    player.GetComponent<Player>().transform.position = new Vector2(573.86f, -255.65f);
+                    player.GetComponent<Player>().transform.position = new Vector2(573.86f, -254.89f);
                     break;
             }
             StartCoroutine(FinishTranisiton());

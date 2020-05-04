@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
         if (this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Jump"))
         {
             isIdle = false;
+
         }
 
         
@@ -145,6 +146,9 @@ public class Player : MonoBehaviour
             listPolCols[1].enabled = false;
             listPolCols[2].enabled = true;
             listPolCols[3].enabled = false;
+
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[0].enabled = true;
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[1].enabled = false;
         }
         if(this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Slide"))
         {
@@ -154,7 +158,9 @@ public class Player : MonoBehaviour
             listPolCols[2].enabled = false;
             listPolCols[3].enabled = true;
 
-            
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[0].enabled = true;
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[1].enabled = false;
+
         }
 
 
@@ -165,6 +171,9 @@ public class Player : MonoBehaviour
             listPolCols[1].enabled = true;
             listPolCols[2].enabled = false;
             listPolCols[3].enabled = false;
+
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[0].enabled = true;
+            groundCheck.transform.GetComponent<Grounded>().listBoxCols[1].enabled = false;
         }
 
         healthBar.fillAmount = currentHealth / 100;
