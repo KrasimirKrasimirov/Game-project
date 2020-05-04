@@ -157,7 +157,7 @@ public class ShootingDemon : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Player>().isSliding)
             {
-                this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+               // this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
     }
