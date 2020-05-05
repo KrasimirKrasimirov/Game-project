@@ -22,7 +22,7 @@ public class Musket : MonoBehaviour
 
     private AudioSource source;
 
-    private Shake shake;
+    //private Shake shake;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class Musket : MonoBehaviour
         currentAmmo = maxAmmo;
         thePlayer = GameObject.Find("Player");
         source = thePlayer.GetComponent<AudioSource>();
-        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
+        //shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
         loadedAmmo = 1;
         
     }
@@ -84,7 +84,7 @@ public class Musket : MonoBehaviour
         _canFire = false;
 
            
-            shake.CamShake();
+            //shake.CamShake();
             StartCoroutine(Stay());
         
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

@@ -37,6 +37,10 @@ public class ShootingDemon : MonoBehaviour
 
     public bool playerNearby;
 
+    public Sprite dead;
+    public Sprite alive;
+    public Sprite hurt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -146,7 +150,11 @@ public class ShootingDemon : MonoBehaviour
     {
         currentHealth -= damage;
 
-       // animator.SetBool("Hurt", true);
+        // animator.SetBool("Hurt", true);
+
+        if (!died) { 
+        StartCoroutine(Recover());
+        }
 
 
         if (currentHealth <= 0)
@@ -155,10 +163,22 @@ public class ShootingDemon : MonoBehaviour
         }
     }
 
+    IEnumerator Recover()
+    {
+
+        this.GetComponent<SpriteRenderer>().sprite = hurt;
+        
+        yield return new WaitForSeconds(1f);
+
+        this.GetComponent<SpriteRenderer>().sprite = alive;
+    }
+
     void Die()
     {
 
         //animator.SetBool("Dead", true);
+
+        this.GetComponent<SpriteRenderer>().sprite = dead;
 
 
         GetComponent<BoxCollider2D>().enabled = false;
