@@ -10,10 +10,12 @@ public class ChaseRange : MonoBehaviour
     public float attackRange = 14.5f;
 
     Collider2D[] hitEnemies;
+
+    GameObject thePlayer;
     // Start is called before the first frame update
     void Start()
     {
-        GameObject thePlayer = GameObject.Find("Player");
+        thePlayer = GameObject.Find("Player");
         hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
     }
 
@@ -23,7 +25,11 @@ public class ChaseRange : MonoBehaviour
         hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         if (hitEnemies.Length > 0)
         {
-            Debug.Log(hitEnemies.Length);
+            this.GetComponentInParent<Enemies>().animator.SetBool("Chase", true);
+        }
+        else
+        {
+            this.GetComponentInParent<Enemies>().animator.SetBool("Chase", false);
         }
     }
 
@@ -36,6 +42,6 @@ public class ChaseRange : MonoBehaviour
             return;
         }
 
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        //Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

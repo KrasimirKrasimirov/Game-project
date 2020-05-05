@@ -352,11 +352,11 @@ public class Player : MonoBehaviour
             {
                 if (knockFromRight)
                 {
-                    myRigidbody.velocity = new Vector2(-knockback, knockback / 4);
+                    myRigidbody.velocity = new Vector2(-knockback, knockback / 3);
                 }
                 if (!knockFromRight)
                 {
-                    myRigidbody.velocity = new Vector2(knockback, knockback / 4);
+                    myRigidbody.velocity = new Vector2(knockback, knockback / 3);
                 }
                 knockbackCount -= Time.deltaTime;
             }
@@ -468,7 +468,6 @@ public class Player : MonoBehaviour
     {
         if (!invincible)
         {
-            Debug.Log("Hurt");
             currentHealth -= damage;
 
             knockbackCount = knockbackLength;
@@ -484,7 +483,6 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             StartCoroutine(Die());
-            Die();
         }
     }
 
@@ -541,6 +539,7 @@ public class Player : MonoBehaviour
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 1.0f)
         {
             isSliding = true;
+            StartCoroutine(Invulnerability());
             isIdle = false;
             listPolCols[0].enabled = false;
             listPolCols[1].enabled = false;

@@ -24,7 +24,7 @@ public class Enemies : MonoBehaviour
     public Transform attackPoint;
     public LayerMask playerLayer;
 
-    public float attackRange = 2.5f;
+    public float attackRange = 4.5f;
     public int attackDamage = 20;
 
     public int collisionDamage = 10;
@@ -37,8 +37,6 @@ public class Enemies : MonoBehaviour
     Rigidbody2D rigidBodyComp;
     GameObject player;
 
-    public GameObject groundCheck;
-    float groundRadius = 0.2f;
     public bool isGrounded;
     public LayerMask whatIsGround;
 
@@ -85,7 +83,9 @@ public class Enemies : MonoBehaviour
                 PerformPatrol();
                 break;
             case State.Attack:
-                AttackPlayer();
+
+               // Debug.Log("----------------------------------------------------------------------------");
+                //AttackPlayer();
                 break;
             case State.Dead:
                 Die();
@@ -107,12 +107,24 @@ public class Enemies : MonoBehaviour
 
         if (movementAllowed)
         {
-            PerformMovement(aiState == State.Chase ? maxSpeed : patrolSpeed);
+            if(aiState == State.Chase)
+            {
+                PerformMovement(maxSpeed);
+            }
+            else if(aiState != State.Chase)
+            {
+                PerformMovement(patrolSpeed);
+            }
         }
 
         if ((rigidBodyComp.velocity.x > 0 && !facingRight || rigidBodyComp.velocity.x < 0 && facingRight) && !this.animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
             FlipTransform(horizontal);
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Chase"))
+        {
+            aiState = State.Chase;
         }
 
 
@@ -124,19 +136,7 @@ public class Enemies : MonoBehaviour
 
     void PerformPatrol()
     {
-        Vector3 offset = new Vector3(patrolSpeed, 0f);
-       // bool grounded = Physics2D.OverlapCircle(groundCheck.transform.position + offset, groundRadius, whatIsGround);
-        //if (!isGrounded)
-        //{
-       //     FlipMovement();
-       // }
-
-
-
-        if ((this.transform.position - player.transform.position).magnitude < triggerRange)
-        {
-            aiState = State.Chase;
-        }
+        
     }
 
     void ChasePlayer()
@@ -145,40 +145,37 @@ public class Enemies : MonoBehaviour
         if (((maxSpeed > 0f) && (horizontalDifference > 0f)) || ((maxSpeed < 0f) && (horizontalDifference < 0f)))
         {
             speedMultiplier = 3f;
+        }
+
+        if(horizontalDifference > 0f && facingRight)
+        {
+            FlipMovement();
+        }
+        else if(horizontalDifference < 0f && !facingRight)
+        {
             FlipMovement();
         }
 
-        if((this.transform.position - player.transform.position).magnitude <= attackRange){
-            Debug.Log("Can attack");
+       
+        if ((this.transform.position - player.transform.position).magnitude <= attackRange){
             aiState = State.Attack;
+            StartCoroutine(AttackPlayer());
         }
 
-        if ((this.transform.position - player.transform.position).magnitude > triggerRange * 1.5f)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Patrol"))
         {
             aiState = State.Patrol;
+            FlipMovement();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Player")
-        {
-            collision.collider.GetComponent<Player>().Hurt(collisionDamage);
-            aiState = State.Attack;
-            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-
-        if (collision.collider.tag == "Ground")
-        {
-            isGrounded = true;
-        }
-    }
+  
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         float horizontal = Input.GetAxis("Horizontal");
        
-        if (collision.gameObject == nextPatrolPoint)
+        if (collision.gameObject == nextPatrolPoint && animator.GetCurrentAnimatorStateInfo(0).IsTag("Patrol"))
         {
             FlipMovement();
 
@@ -199,23 +196,35 @@ public class Enemies : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            collision.collider.GetComponent<Player>().Hurt(collisionDamage);
+            aiState = State.Attack;
+           // rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        if (collision.collider.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.tag == "Ground")
         {
-            Debug.Log("ground collision");
             isGrounded = true;
         }
         if (collision.collider.tag == "Player")
         {
-            Debug.Log("player collision");
-            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
+            //rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         float horizontal = Input.GetAxis("Horizontal");
-        aiState = State.Chase;
 
         if (collision.collider.tag == "Ground")
         {
@@ -224,40 +233,45 @@ public class Enemies : MonoBehaviour
 
         if(collision.collider.tag == "Player")
         {
-            rigidBodyComp.constraints = RigidbodyConstraints2D.None;
-            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeRotation;
+           // rigidBodyComp.constraints = RigidbodyConstraints2D.None;
+           // rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 
-    void AttackPlayer()
+
+
+    IEnumerator AttackPlayer()
     {
-        if (Time.time >= nextAttackTime)
+        if (!this.animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
-            if (!this.animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+            //play the attack animation
+            //animator.SetTrigger("Attack");
+            animator.SetBool("Attack", true);
+            rigidBodyComp.velocity = Vector2.zero;
+            //detect enemies in range of attack
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+
+            //damage enemy
+            foreach (Collider2D enemy in hitEnemies)
             {
-                //play the attack animation
-                animator.SetTrigger("Attack");
-                rigidBodyComp.velocity = Vector2.zero;
-                //detect enemies in range of attack
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
-
-
-                //damage enemy
-                foreach (Collider2D enemy in hitEnemies)
+                enemy.GetComponent<Player>().Hurt(attackDamage);
+                if (enemy.GetComponent<Player>().transform.position.x < transform.position.x)
                 {
-                    enemy.GetComponent<Player>().Hurt(attackDamage);
-                    if(enemy.GetComponent<Player>().transform.position.x < transform.position.x)
-                    {
-                        enemy.GetComponent<Player>().knockFromRight = true;
-                    }
-                    else
-                    {
-                        enemy.GetComponent<Player>().knockFromRight = false;
-                    }
-                    
+                    enemy.GetComponent<Player>().knockFromRight = true;
                 }
-                nextAttackTime = Time.time + 1f / attackRate;
+                else
+                {
+                    enemy.GetComponent<Player>().knockFromRight = false;
+                }
             }
+
+
+
+            yield return new WaitForSeconds(0.5f);
+
+            animator.SetBool("Attack", false);
+
         }
     }
 
@@ -306,15 +320,12 @@ public class Enemies : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Enemy died!");
-
         animator.SetBool("Dead", true);
 
-        
         GetComponent<Collider2D>().enabled = false;
 
         gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-        rigidBodyComp.velocity = new Vector2(0.0f,0.0f);
+        rigidBodyComp.velocity = Vector2.zero;
 
         this.enabled = false;
     }

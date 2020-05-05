@@ -40,19 +40,10 @@ public class Grounded : MonoBehaviour
 
             if (collision.collider.name == "Slope")
             {
-                //GameObject tilemap = GameObject.Find("Grid/Tilemap");
-                //tilemap.GetComponent<CompositeCollider2D>().enabled = false;
-
-
-
-
-                Debug.Log(collision.collider.name + "-----------------asdsa---------");
                 player.GetComponent<Player>().myRigidbody.velocity = new Vector2(2f, -2f);
                 player.GetComponent<Player>().isSliding = true;
                 player.GetComponent<Player>().keepSliding = true;
                 player.GetComponent<Player>().myAnimator.SetBool("isSliding", true);
-               // player.GetComponent<Player>().transform.eulerAngles = new Vector3(0, 0, -45f);
-               // player.GetComponent<Player>().transform.position = new Vector2(player.GetComponent<Player>().transform.position.x, player.GetComponent<Player>().transform.position.y + 0.6f);
             }
         }
 
