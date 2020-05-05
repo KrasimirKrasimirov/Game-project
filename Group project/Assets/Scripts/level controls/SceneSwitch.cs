@@ -6,6 +6,7 @@ public class SceneSwitch : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadSceneAsync("TestLevel");
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ResumeGame()

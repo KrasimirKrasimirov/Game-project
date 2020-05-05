@@ -8,34 +8,20 @@ public class Fireball : MonoBehaviour
     public int damage = 50;
     public Rigidbody2D rb;
 
-    public ShootingDemon demon;
+    public GameObject demon;
+    public ShootingDemon sd;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        demon = FindObjectOfType<ShootingDemon>();
-
-        if (demon.transform.localScale.x < 0)
-        {
-            speed = -speed;
-        }
-
         this.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
     }
 
     private void Update()
     {
-        if (demon.facingRight) {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
             rb.velocity = new Vector2(speed, 0);
-        }
-        else if (!demon.facingRight)
-        {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-            rb.velocity = new Vector2(-speed, 0);
-        }
+        
         
     }
     private void OnCollisionEnter2D(Collision2D collision)

@@ -9,19 +9,25 @@ public class Musket : MonoBehaviour
     GameObject thePlayer;
 
     public static int currentAmmo;
-    public static int maxAmmo = 12;
+    public int maxAmmo = 12;
     public static int loadedAmmo = 1;
     [SerializeField]
-    float _reloadSpeed = 3.2f;
+    float _reloadSpeed = 2.2f;
     [SerializeField]
     bool _canFire;
     bool _isReloading = false;
+
+    public AudioClip reloadSound;
+    public AudioClip shootSound;
+
+    private AudioSource source;
 
     void Start()
     {
         _canFire = true;
         currentAmmo = maxAmmo;
         thePlayer = GameObject.Find("Player");
+        source = thePlayer.GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -34,6 +40,7 @@ public class Musket : MonoBehaviour
             {
                 if (_canFire == true)
                 {
+                    Debug.Log("---");
                     Shoot();
                 }
             }
@@ -77,9 +84,10 @@ public class Musket : MonoBehaviour
             StartCoroutine(Stay());
         
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        //play firing anim
-        //play firing sound
-        loadedAmmo--;
+            //play firing anim
+            //play firing sound
+            source.PlayOneShot(shootSound);
+            loadedAmmo--;
         StartCoroutine(WeaponReload());
         }
     }
@@ -88,14 +96,13 @@ public class Musket : MonoBehaviour
     IEnumerator WeaponReload()
     {
         _isReloading = true;
-        Debug.Log("Reloading...");
         _canFire = false;
-        //play reload animation
-        //play reload sounds
-        Debug.Log("Reload Over");
+       
         currentAmmo--;
         yield return new WaitForSeconds(_reloadSpeed);
-        
+        //play reload animation
+        //play reload sounds
+        source.PlayOneShot(reloadSound);
 
         loadedAmmo = 1;
         _canFire = true;
@@ -106,14 +113,13 @@ public class Musket : MonoBehaviour
     {
         Player player = thePlayer.GetComponent<Player>();
         player.myRigidbody.velocity = Vector2.zero;
-        //player.myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         player.myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         
         player.myAnimator.SetTrigger("Shoot");
         
         yield return new WaitForSeconds(0.5f);
-        //player.myRigidbody.constraints = RigidbodyConstraints2D.None;
         player.myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+
 
 }

@@ -202,7 +202,7 @@ public class Enemies : MonoBehaviour
         {
             collision.collider.GetComponent<Player>().Hurt(collisionDamage);
             aiState = State.Attack;
-           // rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
+            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
         if (collision.collider.tag == "Ground")
@@ -234,7 +234,7 @@ public class Enemies : MonoBehaviour
         if(collision.collider.tag == "Player")
         {
            // rigidBodyComp.constraints = RigidbodyConstraints2D.None;
-           // rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rigidBodyComp.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

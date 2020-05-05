@@ -9,6 +9,12 @@ public class AmmoAngel : MonoBehaviour
     Text _InteractionText;
 
     bool _canGiveBlessing = true;
+    GameObject player;
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+        
+    }
 
     void OnTriggerStay2D(Collider2D collision)
     {
@@ -18,7 +24,7 @@ public class AmmoAngel : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 _canGiveBlessing = false;
-                Musket.currentAmmo = Musket.maxAmmo;
+                Musket.currentAmmo = player.GetComponent<Musket>().maxAmmo;
                 _InteractionText.text = "";
                 //Play sound
                 //Play animation/particle effects

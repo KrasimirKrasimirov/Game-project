@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6123193417831695589}
   - component: {fileID: 9176493554818879387}
   - component: {fileID: 4744895170051493046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,3 +135,4 @@ MonoBehaviour:
   damage: 20
   rb: {fileID: 6123193417831695589}
   demon: {fileID: 0}
+  sd: {fileID: 0}

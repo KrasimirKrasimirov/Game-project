@@ -70,6 +70,12 @@ public class Player : MonoBehaviour
 
     public PolygonCollider2D[] listPolCols;
 
+
+    ////////////////////////////Audio
+    private AudioSource source;
+    public AudioClip swordSwing;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +89,8 @@ public class Player : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         counterJumpForce = new Vector2(0f, -30f);
+
+        source = this.GetComponent<AudioSource>();
 
         listPolCols = gameObject.GetComponents<PolygonCollider2D>();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -386,6 +394,7 @@ public class Player : MonoBehaviour
         //play the attack animation
         myAnimator.SetTrigger("Attack");
         myRigidbody.velocity = Vector2.zero;
+        source.PlayOneShot(swordSwing);
         //detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
@@ -472,12 +481,14 @@ public class Player : MonoBehaviour
 
             knockbackCount = knockbackLength;
 
+            myAnimator.SetBool("Hurt", true);
+
             StartCoroutine(Invulnerability());
         }
 
 
 
-        myAnimator.SetBool("Hurt", true);
+       
 
 
         if (currentHealth <= 0)

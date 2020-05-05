@@ -9,6 +9,12 @@ public class BulletAngel : MonoBehaviour
     Text _InteractionText;
 
     bool _canGiveBlessing = true;
+    GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     void OnTriggerStay2D(Collider2D collision)
     {
@@ -18,8 +24,8 @@ public class BulletAngel : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 _canGiveBlessing = false;
-                Musket.maxAmmo += 12;
-                Musket.currentAmmo = Musket.maxAmmo;
+                player.GetComponent<Musket>().maxAmmo += 12;
+                Musket.currentAmmo = player.GetComponent<Musket>().maxAmmo;
                 Musket.loadedAmmo = 1;
                 _InteractionText.text = "";
                 //Play sound

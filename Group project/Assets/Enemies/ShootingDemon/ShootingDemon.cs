@@ -26,9 +26,10 @@ public class ShootingDemon : MonoBehaviour
     public int collisionDamage = 10;
 
 
+
     GameObject player;
 
-    float _reloadSpeed = 3.2f;
+    public float _reloadSpeed = 3.2f;
     bool _canFire = true;
     bool _isReloading = false;
 
@@ -99,8 +100,19 @@ public class ShootingDemon : MonoBehaviour
             //play the attack animation
             // animator.SetTrigger("Attack");
             
-        Instantiate(fireballPrefab, firePoint.position, firePoint.rotation);
-    
+        GameObject fb =  Instantiate(fireballPrefab, firePoint.position, firePoint.rotation);
+
+        if (facingRight)
+        {
+            fb.GetComponent<Fireball>().speed = fb.GetComponent<Fireball>().speed;
+            fb.GetComponent<Fireball>().transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (!facingRight)
+        {
+            fb.GetComponent<Fireball>().speed = -fb.GetComponent<Fireball>().speed;
+            fb.GetComponent<Fireball>().transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
         StartCoroutine(WeaponReload());            
     }
 
