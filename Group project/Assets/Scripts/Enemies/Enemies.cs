@@ -51,7 +51,7 @@ public class Enemies : MonoBehaviour
     {
         currentHealth = maxHealth;
         player = GameObject.Find("Player");
-        facingRight = false;
+        facingRight = true;
         rigidBodyComp = GetComponent<Rigidbody2D>();
         isGrounded = false;
         nextPatrolPoint = patrolPoint2;
