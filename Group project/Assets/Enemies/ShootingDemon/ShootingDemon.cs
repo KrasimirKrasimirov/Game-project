@@ -157,18 +157,39 @@ public class ShootingDemon : MonoBehaviour
 
         GetComponent<BoxCollider2D>().enabled = false;
         weakSpot.GetComponent<BoxCollider2D>().enabled = false;
+        this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         this.enabled = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+   
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        Debug.Log(collision.tag);
+
+        if (collision.name == "KeepSlidingCheck")
         {
-            if (collision.gameObject.GetComponent<Player>().isSliding)
+            if (collision.gameObject.GetComponentInParent<Player>().isSliding)
             {
-               // this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                StartCoroutine(playerSlided());
             }
         }
+
     }
+
+    IEnumerator playerSlided()
+    {
+        Debug.Log("--------");
+        this.enabled = false;
+        yield return new WaitForSeconds(10);
+        this.enabled = true;
+    }
+
+
+
+
+
+
+
 }
