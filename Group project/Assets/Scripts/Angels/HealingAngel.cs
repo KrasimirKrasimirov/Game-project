@@ -5,21 +5,44 @@ using UnityEngine.UI;
 
 public class HealingAngel : MonoBehaviour
 {
-    [SerializeField]
-    Text _InteractionText;
+    
 
     bool _canGiveBlessing = true;
+
+    GameObject _InteractionText;
+
+    private void Start()
+    {
+        _InteractionText = GameObject.Find("InteractionText");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && _canGiveBlessing == true)
+        {
+            _InteractionText.GetComponent<Text>().text = "Press E to recieve the angel's blessing";
+            if (Input.GetButtonDown("Interact"))
+            {
+                _canGiveBlessing = false;
+                Player.currentHealth = Player.maxHealth;
+                _InteractionText.GetComponent<Text>().text = "Let me help you little soldier! (Health regained)";
+                //Play sound
+                //Play animation/particle effects
+            }
+        }
+    }
+
 
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player" && _canGiveBlessing == true)
         {
-            _InteractionText.text = "Press E to recieve the angel's blessing";
+            _InteractionText.GetComponent<Text>().text = "Press E to recieve the angel's blessing";
             if (Input.GetButtonDown("Interact"))
             {
                 _canGiveBlessing = false;
-                PlayerController.currentHealth = PlayerController.maxHealth;
-                _InteractionText.text = "";
+                Player.currentHealth = Player.maxHealth;
+                _InteractionText.GetComponent<Text>().text = "Let me help you little soldier! (Health regained)";
                 //Play sound
                 //Play animation/particle effects
             }
@@ -28,6 +51,6 @@ public class HealingAngel : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        _InteractionText.text = "";   
+        _InteractionText.GetComponent<Text>().text = "";   
     }
 }

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2421745269609447642}
   - component: {fileID: 2421745269609447643}
   - component: {fileID: 3671743816132478807}
+  - component: {fileID: 532096373906738061}
   m_Layer: 8
   m_Name: ShootingDemon
   m_TagString: Enemy
@@ -209,6 +210,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &532096373906738061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421745269609447646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a380a9980f462ae4688bb9832b88c728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 2421745268603514778}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  attackRange: 25.55
 --- !u!1 &7622076713208902305
 GameObject:
   m_ObjectHideFlags: 0

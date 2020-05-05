@@ -31,6 +31,8 @@ public class Musket : MonoBehaviour
         thePlayer = GameObject.Find("Player");
         source = thePlayer.GetComponent<AudioSource>();
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
+        loadedAmmo = 1;
+        
     }
     // Update is called once per frame
     void Update()
@@ -43,7 +45,6 @@ public class Musket : MonoBehaviour
             {
                 if (_canFire == true)
                 {
-                    Debug.Log("---");
                     Shoot();
                 }
             }
@@ -83,7 +84,6 @@ public class Musket : MonoBehaviour
         _canFire = false;
 
            
-            Debug.Log("fire");
             shake.CamShake();
             StartCoroutine(Stay());
         

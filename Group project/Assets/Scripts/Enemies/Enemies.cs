@@ -51,7 +51,7 @@ public class Enemies : MonoBehaviour
     {
         currentHealth = maxHealth;
         player = GameObject.Find("Player");
-        facingRight = true;
+        facingRight = false;
         rigidBodyComp = GetComponent<Rigidbody2D>();
         isGrounded = false;
         nextPatrolPoint = patrolPoint2;
@@ -84,7 +84,6 @@ public class Enemies : MonoBehaviour
                 break;
             case State.Attack:
 
-               // Debug.Log("----------------------------------------------------------------------------");
                 //AttackPlayer();
                 break;
             case State.Dead:

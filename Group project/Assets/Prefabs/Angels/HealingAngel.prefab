@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4754176768667488556}
   - component: {fileID: 4754176768667488559}
   - component: {fileID: 4754176768667488558}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HealingAngel
   m_TagString: HealingAngel
   m_Icon: {fileID: 0}

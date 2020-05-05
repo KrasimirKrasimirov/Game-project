@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4556923736198190719}
   - component: {fileID: 4556923736198190716}
   - component: {fileID: 7002964448147565117}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BulletAngel
   m_TagString: HealingAngel
   m_Icon: {fileID: 0}

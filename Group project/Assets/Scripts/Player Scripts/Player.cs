@@ -43,10 +43,10 @@ public class Player : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
-    private bool facingRight;
+    public bool facingRight;
 
     public bool invincible;
-    private float invincibilityTime = 3f;
+    private float invincibilityTime = 1.5f;
 
     //check if we are sliding
     public bool isSliding = false;
@@ -140,8 +140,6 @@ public class Player : MonoBehaviour
             listPolCols[2].enabled = false; //attack collider
             listPolCols[3].enabled = false; //slide collider
 
-           // Debug.Log("---------------------" + groundCheck.transform.Find("listBoxCols"));
-           // Debug.Log("---------------------" + groundCheck.transform.GetComponent<Grounded>().listBoxCols);
             groundCheck.transform.GetComponent<Grounded>().listBoxCols[0].enabled = false;
             groundCheck.transform.GetComponent<Grounded>().listBoxCols[1].enabled = true;
         }
@@ -436,15 +434,6 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-        {
-            return;
-        }
-
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
 
     IEnumerator Die()
     {

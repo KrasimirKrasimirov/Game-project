@@ -21,6 +21,15 @@ public class Bullet : MonoBehaviour
             speed = -speed;
         }
 
+        if (player.facingRight)
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
         
     }
 

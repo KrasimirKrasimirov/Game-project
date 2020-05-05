@@ -32,8 +32,10 @@ public class ShootingDemon : MonoBehaviour
     GameObject player;
 
     public float _reloadSpeed = 3.2f;
-    bool _canFire = true;
+    public bool _canFire = true;
     bool _isReloading = false;
+
+    public bool playerNearby;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,7 @@ public class ShootingDemon : MonoBehaviour
         player = GameObject.Find("Player");
         facingRight = true;
         died = false;
+        playerNearby = false;
     }
 
     // Update is called once per frame
@@ -75,7 +78,7 @@ public class ShootingDemon : MonoBehaviour
         }
 
 
-
+        if (playerNearby) { 
         if (player.transform.position.x < transform.position.x)
         {
             facingRight = false;
@@ -93,6 +96,7 @@ public class ShootingDemon : MonoBehaviour
             {
                 AttackPlayer();
             }
+        }
         }
 
     }
@@ -141,7 +145,6 @@ public class ShootingDemon : MonoBehaviour
     public void Hurt(int damage)
     {
         currentHealth -= damage;
-        Debug.Log("hit");
 
        // animator.SetBool("Hurt", true);
 
@@ -154,7 +157,6 @@ public class ShootingDemon : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Enemy died!");
 
         //animator.SetBool("Dead", true);
 
@@ -170,7 +172,6 @@ public class ShootingDemon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
 
         if (collision.name == "KeepSlidingCheck")
         {

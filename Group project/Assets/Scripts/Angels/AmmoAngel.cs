@@ -5,27 +5,46 @@ using UnityEngine.UI;
 
 public class AmmoAngel : MonoBehaviour
 {
-    [SerializeField]
-    Text _InteractionText;
 
     bool _canGiveBlessing = true;
     GameObject player;
+
+
+    GameObject _InteractionText;
     private void Start()
     {
         player = GameObject.Find("Player");
+        _InteractionText = GameObject.Find("InteractionText");
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && _canGiveBlessing == true)
+        {
+            _InteractionText.GetComponent<Text>().text = "Press E to recieve the angel's blessing";
+            if (Input.GetButtonDown("Interact"))
+            {
+                _canGiveBlessing = false;
+                Musket.currentAmmo = player.GetComponent<Musket>().maxAmmo;
+                _InteractionText.GetComponent<Text>().text = "You're not alone in this... Let me help you! (ammo fully restored)";
+                //Play sound
+                //Play animation/particle effects
+            }
+        }
+    }
+
 
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player" && _canGiveBlessing == true)
         {
-            _InteractionText.text = "Press E to recieve the angel's blessing";
+            _InteractionText.GetComponent<Text>().text = "Press E to recieve the angel's blessing";
             if (Input.GetButtonDown("Interact"))
             {
                 _canGiveBlessing = false;
                 Musket.currentAmmo = player.GetComponent<Musket>().maxAmmo;
-                _InteractionText.text = "";
+                _InteractionText.GetComponent<Text>().text = "You're not alone in this... Let me help you! (ammo fully restored)";
                 //Play sound
                 //Play animation/particle effects
             }
@@ -34,6 +53,6 @@ public class AmmoAngel : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        _InteractionText.text = "";   
+        _InteractionText.GetComponent<Text>().text = "";   
     }
 }
