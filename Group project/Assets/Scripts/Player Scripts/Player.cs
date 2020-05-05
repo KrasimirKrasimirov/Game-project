@@ -102,6 +102,7 @@ public class Player : MonoBehaviour
             Physics2D.IgnoreCollision(enemy.GetComponent<BoxCollider2D>(), listPolCols[3]);
         }
 
+
         
 
         SetTransitions();
