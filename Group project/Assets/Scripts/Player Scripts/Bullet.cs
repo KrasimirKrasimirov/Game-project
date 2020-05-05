@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        if (hitInfo.name == "ShootingDemon")
+        if (hitInfo.name == "WeakSpot")
         {
             ShootingDemon sd = hitInfo.GetComponent<ShootingDemon>();
             if (sd != null)

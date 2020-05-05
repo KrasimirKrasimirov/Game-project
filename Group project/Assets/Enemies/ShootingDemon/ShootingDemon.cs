@@ -25,6 +25,8 @@ public class ShootingDemon : MonoBehaviour
 
     public int collisionDamage = 10;
 
+    bool died = false;
+
 
 
     GameObject player;
@@ -39,6 +41,7 @@ public class ShootingDemon : MonoBehaviour
         currentHealth = maxHealth;
         player = GameObject.Find("Player");
         facingRight = true;
+        died = false;
     }
 
     // Update is called once per frame
@@ -68,6 +71,7 @@ public class ShootingDemon : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            died = true;
         }
 
 
@@ -76,7 +80,7 @@ public class ShootingDemon : MonoBehaviour
         {
             facingRight = false;
 
-            if (_canFire == true)
+            if (_canFire == true && !died)
             {
             AttackPlayer();
             }
@@ -85,7 +89,7 @@ public class ShootingDemon : MonoBehaviour
         {
             facingRight = true;
 
-            if (_canFire == true)
+            if (_canFire == true && !died)
             {
                 AttackPlayer();
             }
@@ -180,10 +184,13 @@ public class ShootingDemon : MonoBehaviour
 
     IEnumerator playerSlided()
     {
-        Debug.Log("--------");
+        
         this.enabled = false;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(4);
+
+        if (!died) { 
         this.enabled = true;
+        }
     }
 
 

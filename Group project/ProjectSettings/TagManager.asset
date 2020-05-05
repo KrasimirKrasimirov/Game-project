@@ -15,6 +15,7 @@ TagManager:
   - Transition
   - BackgroundMusic
   - ChaseRadius
+  - ScreenShake
   layers:
   - Default
   - TransparentFX

@@ -142,6 +142,7 @@ MonoBehaviour:
     m_Bits: 512
   attackDamage: 20
   collisionDamage: 10
+  _reloadSpeed: 3.2
 --- !u!95 &2421745269609447642
 Animator:
   serializedVersion: 3
@@ -233,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7622076713208902305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.08, y: 0, z: 0}
+  m_LocalPosition: {x: 2.08, y: 0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2421745269609447641}
@@ -263,5 +264,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.4390678}
+  m_Size: {x: 1, y: 3.1}
   m_EdgeRadius: 0
