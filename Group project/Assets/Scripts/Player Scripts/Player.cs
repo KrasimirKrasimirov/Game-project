@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     {
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
-        movementSpeed = 10.0f;
+        movementSpeed = 13.0f;
         jumpSpeed = 27.0f;
         isGrounded = false;
         facingRight = true;
@@ -246,9 +246,45 @@ public class Player : MonoBehaviour
         }
 
 
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+
+            if(myRigidbody.isKinematic != true)
+            {
+                myRigidbody.isKinematic = true;
+                invincible = true;
+            }
+            else
+            {
+                myRigidbody.isKinematic = false;
+            }
+
+            
+        }
 
 
 
+        if (myRigidbody.isKinematic)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                myRigidbody.velocity = new Vector2(0,  movementSpeed);
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                myRigidbody.velocity = new Vector2(0, -movementSpeed);
+            }
+
+           
+
+            if (!Input.anyKey)
+            {
+                myRigidbody.velocity = new Vector2(0, 0);
+            }
+
+            //myRigidbody.velocity = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, myRigidbody.velocity.y);
+        }
 
 
 
@@ -258,11 +294,15 @@ public class Player : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isSliding)
         if (Input.GetKeyDown(KeyCode.W))
         {
+           
+            
+
             jumpKeyHeld = true;
             if (isGrounded && !isSliding && !isJumping)
             {
                 isJumping = true;
                 myRigidbody.AddForce(Vector2.up * jumpSpeed * myRigidbody.mass * furtherJumpIfRunning, ForceMode2D.Impulse);
+            
             }
             //gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
 
