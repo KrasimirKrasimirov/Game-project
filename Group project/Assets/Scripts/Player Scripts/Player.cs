@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        
         currentHealth = maxHealth;
         Time.timeScale = 1.0f;
         movementSpeed = 13.0f;
@@ -258,6 +258,7 @@ public class Player : MonoBehaviour
             else
             {
                 myRigidbody.isKinematic = false;
+                invincible = false;
             }
 
             
@@ -498,7 +499,7 @@ public class Player : MonoBehaviour
         this.gameObject.GetComponentInChildren<Musket>().enabled = false;
 
         yield return new WaitForSeconds(1.5f);
-
+        
         restartButton.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
     }

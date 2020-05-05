@@ -5,7 +5,7 @@ public class SceneSwitch : MonoBehaviour
 {
     public void StartGame()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadSceneAsync("TestLevel");
         
     }
