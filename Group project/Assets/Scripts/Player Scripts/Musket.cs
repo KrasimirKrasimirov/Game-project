@@ -21,7 +21,7 @@ public class Musket : MonoBehaviour
     {
         _canFire = true;
         currentAmmo = maxAmmo;
-        thePlayer = GameObject.Find("Player"); ;
+        thePlayer = GameObject.Find("Player");
     }
     // Update is called once per frame
     void Update()
@@ -106,13 +106,13 @@ public class Musket : MonoBehaviour
     {
         Player player = thePlayer.GetComponent<Player>();
         player.myRigidbody.velocity = Vector2.zero;
-        player.myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        player.myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
+        //player.myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        player.myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         
         player.myAnimator.SetTrigger("Shoot");
         
         yield return new WaitForSeconds(0.5f);
-        player.myRigidbody.constraints = RigidbodyConstraints2D.None;
+        //player.myRigidbody.constraints = RigidbodyConstraints2D.None;
         player.myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 

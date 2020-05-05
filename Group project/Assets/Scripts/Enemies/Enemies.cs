@@ -132,6 +132,7 @@ public class Enemies : MonoBehaviour
        // }
 
 
+
         if ((this.transform.position - player.transform.position).magnitude < triggerRange)
         {
             aiState = State.Chase;

@@ -99,14 +99,9 @@ public class Player : MonoBehaviour
         SetTransitions();
     }
 
-    public Animator getAnimator()
-    {
-        return myAnimator;
-    }
 
     void Update()
     {
-
         if (myRigidbody.velocity.x == 0 && !isSliding && !isJumping)
         {
             isIdle = true;
@@ -169,7 +164,6 @@ public class Player : MonoBehaviour
 
         if (isIdle)
         {
-            Debug.Log("idle");
             listPolCols[0].enabled = false;
             listPolCols[1].enabled = true;
             listPolCols[2].enabled = false;
@@ -182,7 +176,7 @@ public class Player : MonoBehaviour
         healthBar.fillAmount = currentHealth / 100;
         if (currentHealth <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
 
 
@@ -442,10 +436,33 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    void Die()
+    IEnumerator Die()
     {
-        myAnimator.SetTrigger("Death");
+        myAnimator.SetBool("Dead", true);
+
+
+        GetComponent<PolygonCollider2D>().enabled = false;
+        listPolCols[0].enabled = false;
+        listPolCols[1].enabled = false;
+        listPolCols[2].enabled = false;
+        listPolCols[3].enabled = false;
+
+        groundCheck.transform.GetComponent<Grounded>().listBoxCols[0].enabled = true;
+        groundCheck.transform.GetComponent<Grounded>().listBoxCols[1].enabled = false;
+
+        healthBar.fillAmount = currentHealth / 100;
+        //gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        myRigidbody.velocity = Vector2.zero;
+
+        this.enabled = false;
+        this.gameObject.GetComponentInChildren<Musket>().enabled = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        restartButton.gameObject.SetActive(true);
+        Time.timeScale = 0.0f;
     }
+    
 
     public void Hurt(int damage)
     {
@@ -466,6 +483,7 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            StartCoroutine(Die());
             Die();
         }
     }

@@ -13,6 +13,8 @@ TagManager:
   - PatrolPoint
   - Slide
   - Transition
+  - BackgroundMusic
+  - ChaseRadius
   layers:
   - Default
   - TransparentFX
@@ -27,9 +29,9 @@ TagManager:
   - WhatIsGround
   - Slopes
   - GroundCheck
-  - 
-  - 
-  - 
+  - Bullet
+  - Angels
+  - ChaseRadius
   - 
   - 
   - 
