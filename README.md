@@ -1,2 +1,2 @@
-# Group-game-project
-Repository for group project game
+# Game-project
+Repository for project game
